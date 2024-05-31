@@ -1,4 +1,4 @@
-@import url('https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css');
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css");
 
 @tailwind base;
 @tailwind components;
@@ -8,5 +8,5 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Plus Jakarta Display', 'Inter', sans-serif;
+  font-family: "Plus Jakarta Display", "Inter", sans-serif;
 }

@@ -44,7 +44,7 @@ export default function Blogs() {
             txt="BLOGS"
             className="text-[22px] font-bold tracking-[4px]"
           />
-          <h2 className="my-6 text-[40px] font-bold leading-[120%] text-white xl:text-[54px]">
+          <h2 className="my-6 text-[40px] font-bold leading-[120%] tracking-[0.5px] text-white xl:text-[54px]">
             Latest Blogs
           </h2>
           <CustomNav

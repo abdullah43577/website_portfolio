@@ -16,7 +16,11 @@ const config: Config = {
       "3xl": "1440px",
     },
 
-    extend: {},
+    extend: {
+      aspectRatio: {
+        "9/16": "9/16",
+      },
+    },
   },
   plugins: [],
 };

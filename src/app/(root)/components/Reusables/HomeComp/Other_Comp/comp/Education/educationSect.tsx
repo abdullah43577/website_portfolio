@@ -48,7 +48,7 @@ export default function EducationSect() {
             type="work"
             name="HNGx"
             title="Backend Developer (Intern)"
-            date="sept 2024 - oct 2024"
+            date="sept 2023 - oct 2023"
             img="hng"
           />
 

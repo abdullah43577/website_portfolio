@@ -13,7 +13,7 @@ export default function Services() {
         className="mb-4 text-center text-[22px] font-bold"
       />
       <h2 className="mx-auto mb-10 max-w-[800px] text-center text-[36px] font-bold leading-[120%] tracking-[0.5px] lg:text-[54px]">
-        Design that solves problems, one product at a time.
+        Code that solves problems, one product at a time.
       </h2>
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -23,8 +23,8 @@ export default function Services() {
             What I can do for you
           </h6>
           <p className="mb-4 leading-[22px] text-[#666]">
-            Faster, better products that your users love. Here's all the
-            services I provide:
+            Deliver faster, better products that your users will love. Here are
+            the services I provide:
           </p>
           <ul>
             <li className="list-disc font-bold">Design Strategy</li>
@@ -32,6 +32,8 @@ export default function Services() {
               Web and Mobile App Design
             </li>
             <li className="list-disc font-bold">Front-end Development</li>
+            <li className="my-2 list-disc font-bold">Back-end Development</li>
+            <li className="list-disc font-bold">Fullstack Development</li>
           </ul>
         </div>
 
@@ -41,8 +43,8 @@ export default function Services() {
             Applications I'm fluent in
           </h6>
           <p className="mb-4 leading-[22px] text-[#666]">
-            Every designer needs the right tools to do the perfect job.
-            Thankfully, I'm multilingual.
+            Every designer needs the right tools to craft the perfect product.
+            Thankfully, I'm proficient in multiple platforms:
           </p>
           <ul>
             <li className="list-disc font-bold">Sketch</li>
@@ -57,15 +59,20 @@ export default function Services() {
             What you can expect
           </h6>
           <p className="mb-4 leading-[22px] text-[#666]">
-            I design products that are more than pretty. I make them shippable
-            and usable.
+            I design products that go beyond aesthetics—they're shippable and
+            usable.
           </p>
           <ul>
-            <li className="list-disc font-bold">Clean and functional</li>
-            <li className="my-2 list-disc font-bold">
-              Device and user friendly
+            <li className="list-disc font-bold">
+              Clean and Functional: Intuitive designs that prioritize
+              functionality.
             </li>
-            <li className="list-disc font-bold">Efficient and maintainable</li>
+            <li className="my-2 list-disc font-bold">
+              Device and User Friendly: Seamless experiences across all devices.
+            </li>
+            <li className="list-disc font-bold">
+              Efficient and Maintainable: Code that is easy to manage and scale.
+            </li>
           </ul>
         </div>
       </div>

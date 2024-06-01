@@ -9,8 +9,8 @@ export default function Hero() {
     <section className="my-[80px] gap-16 xl:flex">
       <div>
         <h1 className="mb-4 text-[40px] font-bold leading-[110%] md:text-[68px] lg:text-[75px]">
-          <GradientTxt tagName="span" txt="I design products" /> that delights
-          and inspire people.
+          <GradientTxt tagName="span" txt="I develop fullstack" /> solutions
+          that delight and inspire users.
         </h1>
 
         <p className="mb-16 text-[19px] text-[#666] lg:text-[22px]">

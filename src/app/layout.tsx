@@ -3,7 +3,7 @@ import "./globals.css";
 import ReduxProvider from "@/redux/Provider/provider";
 
 export const metadata: Metadata = {
-  title: "React Home",
+  title: "Home",
   description: "Homepage",
 };
 

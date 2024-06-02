@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CustomNav from "../CustomNav";
-import GradientTxt from "../GradientTxt";
+import GradientTxt from "../Reusables/GradientTxt";
+import CustomNav from "../Reusables/CustomNav";
+import FadeUp from "@/animations/FadeUp";
 
 export default function Blogs() {
   const [isBottom, setIsBottom] = useState(false);
@@ -54,10 +55,11 @@ export default function Blogs() {
           />
         </div>
 
-        <div id="right-content" className="overflow-auto md:max-w-[50%]">
+        <div id="right-content" className="overflow-hidden md:max-w-[50%]">
           {[1, 2, 3, 4, 5].map((_, ind) => (
-            <div
+            <FadeUp
               key={ind}
+              tag="div"
               className="group mb-[50px] cursor-pointer border-b border-gray-400 pb-5"
             >
               <p className="font-medium leading-[130%] text-[#666]">
@@ -70,7 +72,7 @@ export default function Blogs() {
                 txt="Read the article"
                 className="flex items-center gap-2 text-white md:text-[18px]"
               />
-            </div>
+            </FadeUp>
           ))}
         </div>
       </div>

@@ -1,13 +1,17 @@
 "use client";
 
-import CustomBtn from "../../CustomBtn";
-import GradientTxt from "../../GradientTxt";
+import FadeUp from "@/animations/FadeUp";
+import CustomBtn from "../../Reusables/CustomBtn";
+import GradientTxt from "../../Reusables/GradientTxt";
 import AnimatedSlide from "./Swiper";
 
 export default function Projects() {
   return (
     <section className="mb-[500px]">
-      <div className="relative flex flex-col items-center justify-between gap-8 lg:flex-row lg:gap-0">
+      <FadeUp
+        tag="div"
+        className="relative flex flex-col items-center justify-between gap-8 lg:flex-row lg:gap-0"
+      >
         <div>
           <GradientTxt
             tagName="h6"
@@ -23,7 +27,7 @@ export default function Projects() {
 
         {/* swiper component */}
         <AnimatedSlide />
-      </div>
+      </FadeUp>
     </section>
   );
 }

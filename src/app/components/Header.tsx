@@ -50,7 +50,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/projects"
-                className={`my-5 transition-opacity duration-75 ${pathname === "/projects" ? "opacity-50" : "hover:opacity-50"}`}
+                className={`my-5 transition-opacity duration-75 ${pathname.includes("/projects") ? "opacity-50" : "hover:opacity-50"}`}
               >
                 Projects
               </Link>
@@ -109,7 +109,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/projects"
-                className={`my-5 transition-opacity duration-75 ${pathname === "/projects" ? "opacity-50" : "hover:opacity-50"}`}
+                className={`my-5 transition-opacity duration-75 ${pathname.includes("projects") ? "opacity-50" : "hover:opacity-50"}`}
               >
                 Projects
               </Link>

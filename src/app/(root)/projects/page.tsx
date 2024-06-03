@@ -18,7 +18,6 @@ export default function Projects() {
     const fetchProjects = async () => {
       try {
         const projects = await getProjects();
-        console.log(projects, "projects");
         setProjects(projects);
       } catch (error) {
         console.log(error);
@@ -33,7 +32,7 @@ export default function Projects() {
 
   return (
     <section>
-      <div className="container mx-auto grid gap-40 px-5 pt-10 lg:px-20 xl:gap-20">
+      <div className="container mx-auto grid gap-40 px-5 pt-20 lg:px-20 xl:gap-20">
         {!projects.length ? (
           <ProjectSkeleton />
         ) : (
@@ -50,7 +49,7 @@ export default function Projects() {
                   width={400}
                   height={560}
                   priority
-                  className="w-full transition-transform duration-300 group-hover:scale-[1.2]"
+                  className="w-full transition-transform duration-300 group-hover:scale-[1.1]"
                 />
               </div>
               <div className="absolute -bottom-16 -right-2 w-[90%] bg-black px-6 py-6 md:-right-[150px] md:py-14 xl:-right-[400px] xl:bottom-20 xl:w-full">

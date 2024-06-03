@@ -27,7 +27,7 @@ export default function Hero() {
         </p>
 
         <div className="mb-16 flex flex-col gap-4 md:flex-row">
-          <CustomBtn txt="Book a call" className="w-[150px]" />
+          <CustomBtn txt="Book a call" className="w-[150px]" href="/contact" />
           <CustomNav
             txt="Download CV"
             className="flex items-center gap-2 text-lg font-bold"
@@ -41,8 +41,8 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
         src={profImg}
         alt="profile image"
-        loading="lazy"
         className="mx-auto w-full lg:w-[500px]"
+        priority
       />
     </section>
   );

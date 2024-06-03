@@ -11,10 +11,13 @@ import Blogs from "./components/HomeComp/Blogs";
 import Footer from "./components/Footer/Footer";
 import GradientTxt from "./components/Reusables/GradientTxt";
 import Projects from "./components/HomeComp/Projects/Projects";
+import AnimatedSlide from "./components/HomeComp/Projects/Swiper";
+import { getProjects } from "../../sanity/sanity-utils";
+import { Project } from "../../types/Project";
 
 const Preloader = function () {
   return (
-    <section className="fixed left-0 top-0 grid h-full w-full place-content-center bg-[#f3f3f3]">
+    <section className="fixed left-0 top-0 inline-flex h-full w-full items-center justify-center bg-[#f3f3f3]">
       <motion.div
         initial={{ y: 100, opacity: 0, rotate: 10 }}
         animate={{ y: 0, opacity: 1, rotate: 0 }}
@@ -37,9 +40,23 @@ const Preloader = function () {
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
+
+    //? fetch projects
+    const fetch = async function () {
+      try {
+        const projects = await getProjects();
+        setProjects(projects);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetch();
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -55,6 +72,9 @@ export default function Home() {
               <Hero />
               <Services />
               <Projects />
+            </div>
+            <div className="relative h-[400px]">
+              <AnimatedSlide projects={projects} />
             </div>
             <Blogs />
             <OtherComponents />

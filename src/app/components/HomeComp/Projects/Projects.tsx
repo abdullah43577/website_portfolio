@@ -1,16 +1,13 @@
-"use client";
-
 import FadeUp from "@/animations/FadeUp";
 import CustomBtn from "../../Reusables/CustomBtn";
 import GradientTxt from "../../Reusables/GradientTxt";
-import AnimatedSlide from "./Swiper";
 
 export default function Projects() {
   return (
-    <section className="mb-[500px]">
+    <section className="mb-5">
       <FadeUp
         tag="div"
-        className="relative flex flex-col items-center justify-between gap-8 lg:flex-row lg:gap-0"
+        className="flex flex-col items-center justify-between gap-8 lg:flex-row lg:gap-0"
       >
         <div>
           <GradientTxt
@@ -23,10 +20,11 @@ export default function Projects() {
           </h2>
         </div>
 
-        <CustomBtn txt="View all projects" className="w-[200px]" />
-
-        {/* swiper component */}
-        <AnimatedSlide />
+        <CustomBtn
+          txt="View all projects"
+          className="w-[200px]"
+          href="/projects"
+        />
       </FadeUp>
     </section>
   );

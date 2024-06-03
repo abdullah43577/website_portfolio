@@ -1,6 +1,9 @@
 import { createClient, groq } from "next-sanity";
 import { Project } from "../types/Project";
 import { clientConfig } from "./config/client-config";
+import type { Services } from "../types/Services";
+import type { Education, Work } from "../types/Experience";
+import { FAQ } from "../types/FAQ";
 
 export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
@@ -76,5 +79,59 @@ export async function getNextProject(slug: string): Promise<{
       }
     }`,
     { slug },
+  );
+}
+
+export async function getServices(): Promise<Services[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == 'service'] | order(_createdAt asc){
+    _id,
+    _createdAt,
+    title,
+    description,
+    "icon": icon.asset->url,
+    "alt": icon.alt,
+    lists
+    }`,
+  );
+}
+
+export async function getExperiences(): Promise<{
+  education: Education[];
+  work: Work[];
+}> {
+  return createClient(clientConfig).fetch(
+    groq`{
+  "education": *[_type == "experience" && type == "edu"] | order(_createdAt asc) {
+    _id,
+    _createdAt,
+    title,
+    description,
+    year,
+    type
+  },
+  "work": *[_type == "experience" && type == "work"] | order(_createdAt asc) {
+    _id,
+    _createdAt,
+    title,
+    description,
+    "icon": icon.asset->url,
+    "alt": icon.alt,
+    year,
+    type
+  }
+}
+`,
+  );
+}
+
+export async function getFAQ(): Promise<FAQ[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == 'faq'] | order( _createdAt asc) {
+      _id,
+      _createdAt,
+      question,
+      answer,
+      }`,
   );
 }

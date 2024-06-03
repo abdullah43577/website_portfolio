@@ -1,8 +1,5 @@
 import Image from "next/image";
 import arrowRightUp from "../../../../../../../../public/arrow_right_up.svg";
-import nexiImg from "../../../../../../../../public/nexi_img.jpg";
-import udemyImg from "../../../../../../../../public/udemy_img.png";
-import hngImg from "../../../../../../../../public/hng_img.jpg";
 import FadeUp from "@/animations/FadeUp";
 
 interface EduSectProps {
@@ -10,7 +7,8 @@ interface EduSectProps {
   name: string;
   title: string;
   date: string;
-  img?: "nexi" | "udemy" | "hng";
+  img?: string;
+  alt?: string;
 }
 
 export default function EduSect({
@@ -19,9 +17,8 @@ export default function EduSect({
   title,
   date,
   img,
+  alt,
 }: EduSectProps) {
-  const image = img === "nexi" ? nexiImg : img === "hng" ? hngImg : udemyImg;
-
   return (
     <FadeUp
       tag="div"
@@ -31,8 +28,10 @@ export default function EduSect({
         {type === "work" ? (
           <div className="size-10 min-w-10 rounded-full bg-gray-400">
             <Image
-              src={image}
-              alt={`${name} image`}
+              src={img as string}
+              width={40}
+              height={40}
+              alt={alt as string}
               className="rounded-full border border-gray-400"
             />
           </div>

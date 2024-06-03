@@ -1,6 +1,27 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import EduSect from "./comp/EduSect";
+import { Education, Work } from "../../../../../../../types/Experience";
+import { getExperiences } from "../../../../../../../sanity/sanity-utils";
 
 export default function EducationSect() {
+  const [education, setEducation] = useState<Education[]>([]);
+  const [work, setWork] = useState<Work[]>([]);
+
+  useEffect(() => {
+    const getProperties = async function () {
+      try {
+        const { education, work } = await getExperiences();
+        setEducation(education);
+        setWork(work);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getProperties();
+  }, []);
   return (
     <section className="mt-[120px] flex flex-col justify-between gap-16 xl:flex-row xl:gap-10">
       <div className="xl:w-1/2">
@@ -9,24 +30,15 @@ export default function EducationSect() {
         </div>
 
         <div className="flex flex-col gap-10">
-          <EduSect
-            type="edu"
-            name="Aldamak Nouran School"
-            title="Primary School"
-            date="2013-2015"
-          />
-          <EduSect
-            type="edu"
-            name="LSMC Badore"
-            title="Secondary School"
-            date="2012-2018"
-          />
-          <EduSect
-            type="edu"
-            name="Obafemi Awolowo University"
-            title="B.Ed (Social Studies)"
-            date="2019-PRESENT"
-          />
+          {education.map((edu) => (
+            <EduSect
+              key={edu._id}
+              type={edu.type}
+              name={edu.title}
+              title={edu.description}
+              date={edu.year}
+            />
+          ))}
         </div>
       </div>
 
@@ -36,29 +48,17 @@ export default function EducationSect() {
         </div>
 
         <div className="flex flex-col gap-10">
-          <EduSect
-            type="work"
-            name="Nexilistings"
-            title="Frontend Developer"
-            date="2023-2024"
-            img="nexi"
-          />
-
-          <EduSect
-            type="work"
-            name="HNGx"
-            title="Backend Developer (Intern)"
-            date="sept 2023 - oct 2023"
-            img="hng"
-          />
-
-          <EduSect
-            type="work"
-            name="Udemy"
-            title="Student"
-            date="Aug 25, 2022"
-            img="udemy"
-          />
+          {work.map((work) => (
+            <EduSect
+              key={work._id}
+              type={work.type}
+              name={work.title}
+              title={work.description}
+              date={work.year}
+              img={work.icon}
+              alt={work.alt}
+            />
+          ))}
         </div>
       </div>
     </section>

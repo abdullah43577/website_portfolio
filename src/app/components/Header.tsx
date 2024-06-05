@@ -26,7 +26,7 @@ export default function Header() {
               onClick={() => setIsNavClicked(!isNavClicked)}
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
-              className="bi bi-list size-4 cursor-pointer md:size-6 lg:hidden"
+              className="bi bi-list size-6 cursor-pointer md:size-8 lg:hidden"
               viewBox="0 0 16 16"
             >
               <path
@@ -98,30 +98,35 @@ export default function Header() {
               <Link
                 href="/#about"
                 className="my-5 transition-opacity duration-75 hover:opacity-50"
+                onClick={() => setIsNavClicked(false)}
               >
                 About
               </Link>
               <Link
                 href="/#services"
                 className="my-5 transition-opacity duration-75 hover:opacity-50"
+                onClick={() => setIsNavClicked(false)}
               >
                 Services
               </Link>
               <Link
                 href="/projects"
                 className={`my-5 transition-opacity duration-75 ${pathname.includes("projects") ? "opacity-50" : "hover:opacity-50"}`}
+                onClick={() => setIsNavClicked(false)}
               >
                 Projects
               </Link>
               <Link
                 href="/blogs"
                 className={`my-5 transition-opacity duration-75 ${pathname === "/blogs" ? "opacity-50" : "hover:opacity-50"}`}
+                onClick={() => setIsNavClicked(false)}
               >
                 Blogs
               </Link>
               <Link
                 href="/contact"
                 className={`my-5 flex items-center gap-2 transition-opacity duration-75 ${pathname === "/contact" ? "opacity-50" : "hover:opacity-50"}`}
+                onClick={() => setIsNavClicked(false)}
               >
                 <span>Book a call</span>
                 <svg

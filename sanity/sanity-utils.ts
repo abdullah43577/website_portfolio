@@ -3,7 +3,8 @@ import { Project } from "../types/Project";
 import { clientConfig } from "./config/client-config";
 import type { Services } from "../types/Services";
 import type { Education, Work } from "../types/Experience";
-import { FAQ } from "../types/FAQ";
+import type { FAQ } from "../types/FAQ";
+import type { Testimonials } from "../types/Testimonials";
 
 export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
@@ -133,5 +134,25 @@ export async function getFAQ(): Promise<FAQ[]> {
       question,
       answer,
       }`,
+  );
+}
+
+export async function getTestimonials(): Promise<Testimonials[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == 'testimonials'] | order( _createdAt asc) {
+        _id,
+        _createdAt,
+        name,
+        about,
+        message,
+        "image": image.asset->url,
+        "alt": image.alt,
+      }`,
+  );
+}
+
+export async function getTechStacks(): Promise<string[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == 'technologies'][0].technology`,
   );
 }

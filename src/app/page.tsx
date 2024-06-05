@@ -14,6 +14,7 @@ import Projects from "./components/HomeComp/Projects/Projects";
 import AnimatedSlide from "./components/HomeComp/Projects/Swiper";
 import { getProjects } from "../../sanity/sanity-utils";
 import { Project } from "../../types/Project";
+import TechStacks from "./components/TechStacks";
 
 const Preloader = function () {
   return (
@@ -70,6 +71,7 @@ export default function Home() {
           <main key="main">
             <div className="container mx-auto px-5 pt-5 lg:px-20">
               <Hero />
+              <TechStacks />
               <Services />
               <Projects />
             </div>

@@ -8,17 +8,17 @@ export default function ContactDetails() {
   const navLinks = [
     {
       name: "About",
-      path: "/about",
+      path: "/#about",
     },
 
     {
       name: "Services",
-      path: "/services",
+      path: "/#services",
     },
 
     {
       name: "Experience",
-      path: "/experience",
+      path: "/#experience",
     },
 
     {
@@ -43,7 +43,12 @@ export default function ContactDetails() {
 
     {
       name: "Twitter",
-      path: "#",
+      path: "https://x.com/officialayo540",
+    },
+
+    {
+      name: "Github",
+      path: "https://github.com/abdullah43577",
     },
   ];
 

@@ -1,4 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,19 +12,13 @@
   font-family: "Plus Jakarta Display", "Inter", sans-serif;
 }
 
+.dancingScript {
+  font-family: "Dancing Script", cursive;
+}
+
 html,
 body {
   scroll-behavior: smooth;
-}
-
-.gradient_txt {
-  background-image: linear-gradient(
-    108deg,
-    #b16cea 14%,
-    #ff5e69 57%,
-    #ff8a56 81%,
-    #ffa84b
-  );
 }
 
 .links,

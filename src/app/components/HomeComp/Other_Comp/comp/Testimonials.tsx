@@ -5,31 +5,28 @@ import lapImg2 from "../../../../../../public/lap_img2.png";
 import quoteImg from "../../../../../../public/quote.svg";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GradientTxt from "../../../Reusables/GradientTxt";
 import FadeUp from "@/animations/FadeUp";
+import type { Testimonials } from "../../../../../../types/Testimonials";
+import { getTestimonials } from "../../../../../../sanity/sanity-utils";
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
+  const [testimonials, setTestimonials] = useState<Testimonials[]>([]);
 
-  const testimonials = [
-    {
-      id: 1,
-      image: lapImg,
-      quote:
-        " Jade helped us build a software so intuitive that it didn't need a walkthrough. He solved complex problems with brilliant design.",
-      name: "John Franklin",
-      position: "Founder, Double Bunch",
-    },
-    {
-      id: 2,
-      image: lapImg2,
-      quote:
-        " Jade helped us build a massive software so intuitive that it didn't need a walkthrough. He solved complex problems with brilliant design.",
-      name: "John George",
-      position: "Founder, Double Skii",
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async function () {
+      try {
+        const testimonials = await getTestimonials();
+        console.log("testi", testimonials);
+        setTestimonials(testimonials);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleNext = () => {
     setCurrent((prev) => (prev + 1) % testimonials.length);
@@ -61,43 +58,48 @@ export default function Testimonials() {
       </FadeUp>
 
       {/* animation container */}
-      <div className="relative mt-10 flex flex-col items-center justify-center xl:flex-row">
-        <AnimatePresence initial={false} mode="wait">
-          <motion.div
-            key={current}
-            className="flex flex-col items-center xl:flex-row xl:gap-[100px]"
-            custom={current}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            variants={variants}
-            transition={{ duration: 0.5 }}
-          >
-            <Image
-              src={testimonials[current].image}
-              alt="testimonials image"
-              className="max-h-[350px] object-cover"
-            />
+      <div className="relative mt-10 flex flex-col items-center justify-center xl:h-[400px] xl:flex-row">
+        {testimonials.length && (
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              key={current}
+              className="flex flex-col items-center xl:flex-row xl:gap-[100px]"
+              custom={current}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              variants={variants}
+              transition={{ duration: 0.5 }}
+            >
+              <Image
+                src={testimonials[current].image}
+                alt={testimonials[current].alt}
+                className="max-h-[350px] object-cover"
+                width={485}
+                height={490}
+                priority
+              />
 
-            <div className="mt-10 xl:w-1/2">
-              <Image src={quoteImg} alt="quote svg" />
+              <div className="mt-10 xl:w-1/2">
+                <Image src={quoteImg} alt="quote svg" />
 
-              <div className="mt-4">
-                <h3 className="text-[27px] font-bold leading-[130%] md:text-[36px]">
-                  {testimonials[current].quote}
-                </h3>
-                <div className="mt-10">
-                  <p className="text-[19px] font-bold md:text-[20px]">
-                    {testimonials[current].name}
-                  </p>
-                  <p className="text-sm md:text-lg">
-                    {testimonials[current].position}
-                  </p>
+                <div className="mt-4">
+                  <h3 className="text-[27px] font-bold leading-[130%] md:text-[36px]">
+                    {testimonials[current].message}
+                  </h3>
+                  <div className="mt-10">
+                    <p className="text-[19px] font-bold md:text-[20px]">
+                      {testimonials[current].name}
+                    </p>
+                    <p className="text-sm md:text-lg">
+                      {testimonials[current].about}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            </motion.div>
+          </AnimatePresence>
+        )}
 
         <div className="absolute bottom-0 right-0 ml-auto mt-4 flex h-[60px] w-[80px] items-center justify-between bg-black p-2">
           <div

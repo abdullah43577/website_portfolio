@@ -121,6 +121,7 @@ export default function Contact() {
                 placeholder="First Name"
                 name="firstName"
                 value={formData.firstName}
+                aria-label="First Name"
                 required
                 className="mt-4 w-full bg-[#f2f6f7] py-[28px] pl-[24px] pr-[12px] text-[#333] outline-none md:py-[20px]"
                 onChange={(e) => handleFormUpdate(e)}
@@ -136,6 +137,7 @@ export default function Contact() {
                 placeholder="Last Name"
                 name="lastName"
                 value={formData.lastName}
+                aria-label="Last Name"
                 required
                 className="mt-4 w-full bg-[#f2f6f7] py-[28px] pl-[24px] pr-[12px] text-[#333] outline-none md:py-[20px]"
                 onChange={(e) => handleFormUpdate(e)}
@@ -152,6 +154,7 @@ export default function Contact() {
               placeholder="Enter your email address"
               name="email"
               value={formData.email}
+              aria-label="email"
               required
               className="mt-4 w-full bg-[#f2f6f7] py-[28px] pl-[24px] pr-[12px] text-[#333] outline-none md:py-[20px]"
               onChange={(e) => handleFormUpdate(e)}
@@ -175,10 +178,12 @@ export default function Contact() {
               </svg>
               <select
                 name="budget"
+                aria-label="budget"
                 required
                 className="w-full bg-[#f2f6f7] py-[28px] pl-[32px] pr-[24px] text-[#666] outline-none md:py-[20px]"
                 onChange={(e) => handleSelectedPricing(e)}
               >
+                <option value="">Choose Your Budget</option>
                 <option value="0-500">0-500</option>
                 <option value="500-1k">500-1k</option>
                 <option value="1k-2k">1k-2k</option>
@@ -199,6 +204,7 @@ export default function Contact() {
               className="mt-4 w-full bg-[#f2f6f7] py-[28px] pl-[24px] pr-[12px] text-[#333] outline-none md:py-[20px]"
               name="message"
               value={formData.message}
+              aria-label="message"
               required
               placeholder="Enter your message here..."
               onChange={(e) => handleFormUpdate(e)}
@@ -209,6 +215,8 @@ export default function Contact() {
             <motion.button
               initial={{ right: "8px", bottom: "8px" }}
               whileHover={{ right: 0, bottom: 0 }}
+              disabled={isSending}
+              aria-label={isSending ? "Sending message" : "Send message"}
               className="absolute h-[60px] w-[200px] bg-black text-lg font-medium text-white"
             >
               {isSending ? "Submitting..." : "Submit Now!"}

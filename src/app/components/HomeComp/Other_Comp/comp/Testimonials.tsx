@@ -1,7 +1,5 @@
 "use client";
 
-import lapImg from "../../../../../../public/lap_img.png";
-import lapImg2 from "../../../../../../public/lap_img2.png";
 import quoteImg from "../../../../../../public/quote.svg";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
@@ -19,7 +17,6 @@ export default function Testimonials() {
     const fetchData = async function () {
       try {
         const testimonials = await getTestimonials();
-        console.log("testi", testimonials);
         setTestimonials(testimonials);
       } catch (error) {
         console.log(error);
@@ -81,7 +78,7 @@ export default function Testimonials() {
               />
 
               <div className="mt-10 xl:w-1/2">
-                <Image src={quoteImg} alt="quote svg" />
+                <Image src={quoteImg} alt="quote svg" priority />
 
                 <div className="mt-4">
                   <h3 className="text-[27px] font-bold leading-[130%] md:text-[36px]">

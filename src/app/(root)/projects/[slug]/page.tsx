@@ -63,8 +63,8 @@ export default function ProjectDetails({ params }: Params) {
             <p className="md:text-lg">{project.description}</p>
           </div>
         </div>
-        <Image src={gradientBG} alt="gradient background" />
-        <div className="prose prose-blue prose-lg mx-auto max-w-[800px] pt-[100px] lg:pt-[160px]">
+        <Image src={gradientBG} alt="gradient background" priority />
+        <div className="prose prose-lg prose-blue mx-auto max-w-[800px] pt-[100px] lg:pt-[160px]">
           <PortableText value={project?.content} />
         </div>
 

@@ -3,7 +3,7 @@
 import { Toast } from "@/app/components/Reusables/Toast";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 function hasEmptyStrings(obj: any) {
   return Object.values(obj).some((value) => value === "");
@@ -19,7 +19,9 @@ export default function Contact() {
   });
   const [isSending, setIsSending] = useState(false);
 
-  const handleFormUpdate = function (e: ChangeEvent<HTMLInputElement | any>) {
+  const handleFormUpdate = function (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };

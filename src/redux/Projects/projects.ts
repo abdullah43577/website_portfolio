@@ -13,6 +13,7 @@ const initialState: Project = {
   githubUrl: "",
   techStack: [],
   image: "",
+  alt: "",
   content: [],
 };
 

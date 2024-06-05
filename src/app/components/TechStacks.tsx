@@ -37,6 +37,8 @@ export default function TechStacks() {
     <section className="mb-[108px]">
       <h2 className="text-center text-sm md:text-lg">Technologies used</h2>
       <div className="relative mt-10 overflow-hidden">
+        <div className="glassmorphism absolute -left-2 z-10 h-full w-[80px]" />
+        <div className="glassmorphism absolute -right-2 z-10 h-full w-[80px]" />
         <motion.div
           className="flex justify-center gap-6 whitespace-nowrap"
           variants={marqueeVariants}

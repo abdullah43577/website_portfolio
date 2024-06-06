@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import profImage from "../../../../../../public/lap_img.png";
-import profImage2 from "../../../../../../public/lap_img2.png";
+import profImage from "../../../../../../public/img1.jpg";
+import profImage2 from "../../../../../../public/img4.jpg";
+import profImage3 from "../../../../../../public/img3.jpg";
+import profImage4 from "../../../../../../public/img2.jpg";
 import GradientTxt from "../../../Reusables/GradientTxt";
 import FadeUp from "@/animations/FadeUp";
 import { motion } from "framer-motion";
@@ -40,24 +42,24 @@ export default function ProfileInfo() {
         className="grid gap-4"
       >
         <Image
-          src={profImage}
+          src={profImage4}
           alt="image"
-          className="col-span-2 w-full xl:col-start-2 xl:col-end-4 xl:row-start-1 xl:row-end-3 xl:w-auto"
+          className="col-span-2 w-full xl:col-start-2 xl:col-end-4 xl:row-start-1 xl:row-end-3 xl:h-full xl:w-auto"
+        />
+        <Image
+          src={profImage3}
+          alt="image"
+          className="col-span-1 w-full xl:col-span-1 xl:col-start-4 xl:row-start-1 xl:row-end-2 xl:h-full xl:w-auto"
         />
         <Image
           src={profImage2}
           alt="image"
-          className="col-span-1 w-full xl:col-span-1 xl:col-start-4 xl:row-start-1 xl:row-end-2 xl:w-auto"
+          className="col-span-1 w-full xl:col-span-1 xl:col-start-4 xl:row-start-2 xl:row-end-3 xl:h-full xl:w-auto xl:object-cover"
         />
         <Image
           src={profImage}
           alt="image"
-          className="col-span-1 w-full xl:col-span-1 xl:col-start-4 xl:row-start-2 xl:row-end-3 xl:w-auto"
-        />
-        <Image
-          src={profImage2}
-          alt="image"
-          className="col-span-2 w-full xl:col-span-1 xl:col-start-1 xl:row-span-2 xl:row-start-1 xl:row-end-3 xl:aspect-9/16 xl:w-auto xl:object-cover"
+          className="col-span-2 w-full xl:col-span-1 xl:col-start-1 xl:row-span-2 xl:row-start-1 xl:row-end-3 xl:aspect-9/16 xl:h-full xl:w-auto xl:object-cover"
         />
       </motion.div>
     </section>

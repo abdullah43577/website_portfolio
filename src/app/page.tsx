@@ -71,7 +71,9 @@ export default function Home() {
           <main key="main">
             <div className="container mx-auto px-5 pt-5 lg:px-20">
               <Hero />
-              <TechStacks />
+            </div>
+            <TechStacks />
+            <div className="container mx-auto px-5 pt-5 lg:px-20">
               <Services />
               <Projects />
             </div>

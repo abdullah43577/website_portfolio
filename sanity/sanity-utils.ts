@@ -173,3 +173,20 @@ export async function getArticles(): Promise<ArticleProps[]> {
     }`,
   );
 }
+
+export async function getArticle(slug: string): Promise<ArticleProps> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == 'article' && slug.current == $slug][0]{
+    _id,
+    _createdAt,
+    title,
+    "slug": slug.current,
+    date,
+    "image": image.asset->url,
+    "alt": image.alt,
+    content,
+    "estimatedReadingTime": round(length(pt::text(content)) / 5 / 225 )
+    }`,
+    { slug },
+  );
+}

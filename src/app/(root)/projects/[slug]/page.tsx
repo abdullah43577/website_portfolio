@@ -64,7 +64,7 @@ export default function ProjectDetails({ params }: Params) {
           </div>
         </div>
         <Image src={gradientBG} alt="gradient background" priority />
-        <div className="prose prose-lg prose-blue mx-auto max-w-[800px] pt-[100px] lg:pt-[160px]">
+        <div className="prose prose-lg prose-blue mx-auto max-w-[800px] pt-[100px] xl:prose-xl lg:pt-[160px]">
           <PortableText value={project?.content} />
         </div>
 

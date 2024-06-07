@@ -7,8 +7,10 @@ import FadeUp from "@/animations/FadeUp";
 import { ArticleProps } from "../../../../types/Articles";
 import { getArticles } from "../../../../sanity/sanity-utils";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function Articles() {
+  const router = useRouter();
   const [isBottom, setIsBottom] = useState(false);
   const [articles, setArticles] = useState<ArticleProps[]>([]);
 
@@ -81,6 +83,7 @@ export default function Articles() {
               key={article._id}
               tag="div"
               className="group mb-[50px] cursor-pointer border-b border-gray-400 pb-5"
+              to={`articles/${article.slug}`}
             >
               <p className="font-medium leading-[130%] text-[#666]">
                 {article.date} .{article.estimatedReadingTime} mins

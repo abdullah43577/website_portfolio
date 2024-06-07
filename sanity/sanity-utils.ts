@@ -6,7 +6,6 @@ import type { Education, Work } from "../types/Experience";
 import type { FAQ } from "../types/FAQ";
 import type { Testimonials } from "../types/Testimonials";
 import { ArticleProps } from "../types/Articles";
-import { PictureProps } from "../types/Pictures";
 
 export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(

@@ -1,9 +1,9 @@
 "use client";
 
-import { Toast } from "@/app/components/Reusables/Toast";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { toast } from "react-toastify";
 
 function hasEmptyStrings(obj: any) {
   return Object.values(obj).some((value) => value === "");
@@ -33,11 +33,11 @@ export default function Contact() {
 
   const handleFormSubmit = async function (e: FormEvent) {
     e.preventDefault();
-    if (hasEmptyStrings(formData)) return alert("Please fill all fields");
+    if (hasEmptyStrings(formData)) return toast.info("Please fill all fields");
 
     try {
       setIsSending(true);
-      Toast({ icon: "info", title: "Sending your message..." });
+      toast.info("Sending message, please wait...");
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_ENDPOINT}/sendMail`,
         {
@@ -49,18 +49,11 @@ export default function Contact() {
         },
       );
       const data = await response.json();
-      Toast({ icon: "success", title: data.message });
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        budget: "",
-        message: "",
-      });
+      toast.success(data.message);
       setIsSending(false);
     } catch (error) {
       setIsSending(false);
-      Toast({ icon: "error", title: error as string });
+      toast.error("Error sending message, please try again!");
     }
   };
 

@@ -5,6 +5,8 @@ import type { Services } from "../types/Services";
 import type { Education, Work } from "../types/Experience";
 import type { FAQ } from "../types/FAQ";
 import type { Testimonials } from "../types/Testimonials";
+import { ArticleProps } from "../types/Articles";
+import { PictureProps } from "../types/Pictures";
 
 export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
@@ -154,5 +156,21 @@ export async function getTestimonials(): Promise<Testimonials[]> {
 export async function getTechStacks(): Promise<string[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == 'technologies'][0].technology`,
+  );
+}
+
+export async function getArticles(): Promise<ArticleProps[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == 'article'] | order(date desc){
+    _id,
+    _createdAt,
+    title,
+    "slug": slug.current,
+    date,
+    "image": image.asset->url,
+    "alt": image.alt,
+    content,
+    "estimatedReadingTime": round(length(pt::text(content)) / 5 / 225 )
+    }`,
   );
 }

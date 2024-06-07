@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import FadeUp from "@/animations/FadeUp";
 import type { FAQ } from "../../../../../types/FAQ";
 import { getFAQ } from "../../../../../sanity/sanity-utils";
+import { toast } from "react-toastify";
 
 export default function FAQ() {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -16,7 +17,7 @@ export default function FAQ() {
         const faqs = await getFAQ();
         setFaqs(faqs);
       } catch (error) {
-        console.log(error);
+        toast.error("Failed to fetch FAQs. Please try again later.");
       }
     };
     fetchData();

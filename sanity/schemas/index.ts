@@ -1,4 +1,4 @@
-import { BlogPosts } from "./BlogPosts";
+import { Articles } from "./Articles";
 import { Experiences } from "./Experience";
 import { FAQ } from "./FAQ";
 import { Projects } from "./Projects";
@@ -13,7 +13,7 @@ const schemas = [
   FAQ,
   Testimonials,
   Projects,
-  BlogPosts,
+  Articles,
 ];
 
 export default schemas;

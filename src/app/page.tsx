@@ -7,7 +7,6 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/HomeComp/Services";
 import OtherComponents from "./components/HomeComp/Other_Comp/OtherComponents";
-import Blogs from "./components/HomeComp/Blogs";
 import Footer from "./components/Footer/Footer";
 import GradientTxt from "./components/Reusables/GradientTxt";
 import Projects from "./components/HomeComp/Projects/Projects";
@@ -15,6 +14,8 @@ import AnimatedSlide from "./components/HomeComp/Projects/Swiper";
 import { getProjects } from "../../sanity/sanity-utils";
 import { Project } from "../../types/Project";
 import TechStacks from "./components/TechStacks";
+import Articles from "./components/HomeComp/Articles";
+import { toast } from "react-toastify";
 
 const Preloader = function () {
   return (
@@ -52,7 +53,7 @@ export default function Home() {
         const projects = await getProjects();
         setProjects(projects);
       } catch (error) {
-        console.log(error);
+        toast.error("Failed to fetch projects. Please try again later.");
       }
     };
 
@@ -80,7 +81,7 @@ export default function Home() {
             <div className="relative h-[400px]">
               <AnimatedSlide projects={projects} />
             </div>
-            <Blogs />
+            <Articles />
             <OtherComponents />
           </main>
           <Footer key="footer" />

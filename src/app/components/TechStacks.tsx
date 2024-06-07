@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getTechStacks } from "../../../sanity/sanity-utils";
+import { toast } from "react-toastify";
 
 const marqueeVariants = {
   animate: {
@@ -27,7 +28,7 @@ export default function TechStacks() {
         const stacks = await getTechStacks();
         setTechStacks(stacks);
       } catch (error) {
-        console.log(error);
+        toast.error("Failed to fetch techstacks. Please try again later.");
       }
     };
     getStacks();

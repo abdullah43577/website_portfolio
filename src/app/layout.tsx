@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ReduxProvider from "@/redux/Provider/provider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -18,7 +19,8 @@ export default function RootLayout({
         <link rel="icon" href="/icon.png" sizes="any" />
       </head>
       <body suppressHydrationWarning>
-        <ReduxProvider>{children}</ReduxProvider>
+        {children}
+        <ToastContainer />
       </body>
     </html>
   );

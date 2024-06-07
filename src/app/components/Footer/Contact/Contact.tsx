@@ -27,8 +27,8 @@ export default function ContactDetails() {
     },
 
     {
-      name: "Blog",
-      path: "/blog",
+      name: "Articles",
+      path: "/articles",
     },
 
     {
@@ -38,7 +38,7 @@ export default function ContactDetails() {
 
     {
       name: "Instagram",
-      path: "#",
+      path: "https://www.instagram.com/officialayo540/",
     },
 
     {
@@ -98,6 +98,7 @@ export default function ContactDetails() {
             <Link
               key={i}
               href={link.path}
+              target={link.path.startsWith("http") ? "_blank" : "_self"}
               className="links sharedStyles border-b border-[#8a95ad] pb-4 text-white md:text-xl xl:border-none xl:pb-0"
             >
               {link.name}
@@ -106,9 +107,11 @@ export default function ContactDetails() {
         </div>
       </div>
 
-      <p className="pb-10 pt-[100px] text-[#8a95ad]">
+      <p className="pb-10 pt-[100px] text-center text-[#8a95ad]">
         Copyright &copy; {date}{" "}
         <GradientTxt tagName="span" txt="<ReactMode/>." /> all rights reserved.
+        Built using NextJS, Typescript, TailwindCSS, Framer motion, Sanity and
+        NodeJS.
       </p>
     </section>
   );

@@ -2,7 +2,6 @@
 
 import CustomBtn from "./Reusables/CustomBtn";
 import GradientTxt from "./Reusables/GradientTxt";
-// import profImg from "../../../public/prof_img.jpg";
 import profImg from "../../../public/img2.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";

@@ -8,6 +8,7 @@ import GradientTxt from "../../../Reusables/GradientTxt";
 import FadeUp from "@/animations/FadeUp";
 import type { Testimonials } from "../../../../../../types/Testimonials";
 import { getTestimonials } from "../../../../../../sanity/sanity-utils";
+import { toast } from "react-toastify";
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
@@ -19,7 +20,7 @@ export default function Testimonials() {
         const testimonials = await getTestimonials();
         setTestimonials(testimonials);
       } catch (error) {
-        console.log(error);
+        toast.error("Failed to fetch testimonials. Please try again later.");
       }
     };
     fetchData();

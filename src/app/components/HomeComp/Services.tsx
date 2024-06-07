@@ -6,6 +6,7 @@ import FadeUp from "@/animations/FadeUp";
 import { useEffect, useState } from "react";
 import type { Services } from "../../../../types/Services";
 import { getServices } from "../../../../sanity/sanity-utils";
+import { toast } from "react-toastify";
 
 export default function Services() {
   const [services, setServices] = useState<Services[]>([]);
@@ -16,7 +17,7 @@ export default function Services() {
         const services = await getServices();
         setServices(services);
       } catch (error) {
-        console.log(error);
+        toast.error("Failed to fetch services. Please try again later.");
       }
     };
 

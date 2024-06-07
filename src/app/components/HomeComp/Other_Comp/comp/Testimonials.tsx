@@ -56,12 +56,12 @@ export default function Testimonials() {
       </FadeUp>
 
       {/* animation container */}
-      <div className="relative mt-10 flex flex-col items-center justify-center xl:h-[400px] xl:flex-row">
+      <div className="relative mt-10 flex max-w-full flex-col items-center justify-center xl:h-[400px] xl:flex-row">
         {testimonials.length && (
           <AnimatePresence initial={false} mode="wait">
             <motion.div
               key={current}
-              className="flex flex-col items-center xl:flex-row xl:gap-[100px]"
+              className="flex flex-col items-end xl:flex-row xl:gap-[100px]"
               custom={current}
               initial="enter"
               animate="center"
@@ -72,13 +72,13 @@ export default function Testimonials() {
               <Image
                 src={testimonials[current].image}
                 alt={testimonials[current].alt}
-                className="max-h-[350px] object-cover"
+                className="h-[400px] w-full object-cover xl:w-auto"
                 width={485}
                 height={490}
                 priority
               />
 
-              <div className="mt-10 xl:w-1/2">
+              <div className="mt-10 xl:mt-0 xl:w-1/2">
                 <Image src={quoteImg} alt="quote svg" priority />
 
                 <div className="mt-4">
@@ -89,7 +89,7 @@ export default function Testimonials() {
                     <p className="text-[19px] font-bold md:text-[20px]">
                       {testimonials[current].name}
                     </p>
-                    <p className="text-sm md:text-lg">
+                    <p className="max-w-[200px] text-sm sm:max-w-full md:text-lg">
                       {testimonials[current].about}
                     </p>
                   </div>

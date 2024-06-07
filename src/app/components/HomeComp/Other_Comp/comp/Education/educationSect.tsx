@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import EduSect from "./comp/EduSect";
 import { Education, Work } from "../../../../../../../types/Experience";
 import { getExperiences } from "../../../../../../../sanity/sanity-utils";
+import { toast } from "react-toastify";
 
 export default function EducationSect() {
   const [education, setEducation] = useState<Education[]>([]);
@@ -16,12 +17,13 @@ export default function EducationSect() {
         setEducation(education);
         setWork(work);
       } catch (error) {
-        console.log(error);
+        toast.error("Error fetching experiences, Please try again later!");
       }
     };
 
     getProperties();
   }, []);
+
   return (
     <section
       id="experience"

@@ -50,6 +50,13 @@ export default function Contact() {
       );
       const data = await response.json();
       toast.success(data.message);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        budget: "",
+        message: "",
+      });
       setIsSending(false);
     } catch (error) {
       setIsSending(false);

@@ -72,7 +72,10 @@ export default function Articles() {
           />
         </div>
 
-        <div id="right-content" className="overflow-hidden md:max-w-[50%]">
+        <div
+          id="right-content"
+          className="max-w-full overflow-hidden md:max-w-[50%]"
+        >
           {articles.slice(0, 10).map((article) => (
             <FadeUp
               key={article._id}

@@ -52,6 +52,7 @@ This portfolio is designed to showcase my projects, skills, and experiences in w
 
 ### Project Structure
 
+```
 website_portfolio/
 │
 ├── public/
@@ -81,6 +82,7 @@ website_portfolio/
 ├── .prettierrc
 ├── ... (other files and folders)
 └── README.md
+```
 
 ### Content Management
 
@@ -100,6 +102,6 @@ All project data, testimonials, pictures, FAQs, and other content are managed an
 
 If you have any questions, suggestions, or feedback, feel free to reach out to me:
 
-[Email](officialayo540@gmail.com)
+Email: officialayo540@gmail.com
 [LinkedIn](https://linkedin.com/in/ayo540)
-[Twitter](@officialayo540)
+X: @officialayo540

@@ -76,6 +76,6 @@ body {
 }
 
 code {
-  overflow: scroll;
+  overflow-x: auto;
   display: block;
 }

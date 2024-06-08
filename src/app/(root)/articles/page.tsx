@@ -1,7 +1,6 @@
 "use client";
 
 import GradientTxt from "@/app/components/Reusables/GradientTxt";
-import lapImg from "../../../../public/lap_img.png";
 import Image from "next/image";
 import CustomNav from "@/app/components/Reusables/CustomNav";
 import { useEffect, useState } from "react";
@@ -38,17 +37,17 @@ export default function Articles() {
           articles.map((article) => (
             <div
               key={article._id}
-              className="group relative flex cursor-pointer flex-col items-center justify-center xl:max-h-[500px] xl:flex-row"
+              className="group relative mx-auto flex max-w-[1200px] cursor-pointer flex-col items-center justify-center xl:max-h-[500px] xl:flex-row"
               onClick={() => router.push(`articles/${article.slug}`)}
             >
               <div className="w-full overflow-hidden xl:h-[430px] xl:w-auto">
                 <Image
-                  src={lapImg}
+                  src={article.image}
                   alt={article.alt}
                   width={400}
                   height={390}
-                  priority
-                  className="w-full transition-transform duration-300 group-hover:scale-[1.1] xl:h-full xl:w-auto"
+                  loading="lazy"
+                  className="w-full object-cover transition-transform duration-300 group-hover:scale-[1.1] xl:h-full xl:w-auto"
                 />
               </div>
 

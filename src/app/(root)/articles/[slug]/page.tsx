@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import lapImg from "../../../../../public/lap_img.png";
 import { ArticleProps } from "../../../../../types/Articles";
 import { toast } from "react-toastify";
 import { getArticle } from "../../../../../sanity/sanity-utils";
@@ -43,7 +42,7 @@ export default function ArticleDetails({ params }: ParamsProps) {
           </div>
 
           <Image
-            src={lapImg}
+            src={article.image}
             alt={article.alt}
             width={400}
             height={400}

@@ -56,7 +56,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/articles"
-                className={`my-5 transition-opacity duration-75 ${pathname === "/articles" ? "opacity-50" : "hover:opacity-50"}`}
+                className={`my-5 transition-opacity duration-75 ${pathname.includes("/articles") ? "opacity-50" : "hover:opacity-50"}`}
               >
                 Articles
               </Link>
@@ -118,7 +118,7 @@ export default function Header() {
               </Link>
               <Link
                 href="/articles"
-                className={`my-5 transition-opacity duration-75 ${pathname === "/articles" ? "opacity-50" : "hover:opacity-50"}`}
+                className={`my-5 transition-opacity duration-75 ${pathname.includes("/articles") ? "opacity-50" : "hover:opacity-50"}`}
                 onClick={() => setIsNavClicked(false)}
               >
                 Articles

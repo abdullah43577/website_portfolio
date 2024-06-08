@@ -10,9 +10,11 @@ interface CustomNavProps {
 
 export default function CustomNav({ txt, className, to }: CustomNavProps) {
   const router = useRouter();
+
   const navigate = function () {
     router.push(to as string);
   };
+
   return (
     <p
       className={`group cursor-pointer ${className}`}

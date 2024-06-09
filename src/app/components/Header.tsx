@@ -19,7 +19,7 @@ export default function Header() {
               href="/"
               className="text-[15px] font-medium italic sm:text-base md:text-[24px] lg:font-bold"
             >
-              {" <React"}
+              {"<React"}
               <GradientTxt tagName="span" txt="Mode />." />
             </Link>
             <svg
@@ -85,14 +85,18 @@ export default function Header() {
           {/* nav menu */}
 
           <motion.div
-            initial={{ y: "-100%", zIndex: "-5", opacity: 0 }}
+            initial={{
+              height: 0,
+              zIndex: "-5",
+              padding: 0,
+            }}
             animate={{
-              y: isNavClicked ? 0 : "-100%",
+              height: isNavClicked ? "auto" : 0,
               zIndex: isNavClicked ? "500" : "-5",
-              opacity: isNavClicked ? 100 : 0,
+              padding: isNavClicked ? "20px" : 0,
             }}
             transition={{ duration: 0.5 }}
-            className="absolute left-0 top-14 w-full bg-white p-5 shadow-lg lg:hidden"
+            className="absolute left-0 top-14 w-full overflow-hidden bg-white p-5 shadow-lg lg:hidden"
           >
             <div className="container mx-auto flex flex-col px-5 font-medium">
               <Link

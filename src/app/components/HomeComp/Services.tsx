@@ -56,7 +56,7 @@ export default function Services() {
             <p className="mb-4 leading-[22px] text-[#666]">
               {service.description}
             </p>
-            <ul className="inline-flex flex-col gap-3">
+            <ul className="inline-flex flex-col gap-3 pl-5 md:pl-0">
               {service.lists.map((list, i) => (
                 <li key={i} className="list-disc font-bold">
                   {list}

@@ -45,7 +45,18 @@ export default function Home() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
+    // run preloader once
+    const hasPreloaderBeenShown = localStorage.getItem("preloaderShown");
+    if (!hasPreloaderBeenShown) {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        localStorage.setItem("preloaderShown", "true");
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    } else {
+      setIsLoading(false);
+    }
 
     //? fetch projects
     const fetch = async function () {
@@ -59,7 +70,16 @@ export default function Home() {
 
     fetch();
 
-    return () => clearTimeout(timer);
+    // Clear preloader flag on page unload
+    const handleBeforeUnload = () => {
+      localStorage.removeItem("preloaderShown");
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
   }, []);
 
   return (

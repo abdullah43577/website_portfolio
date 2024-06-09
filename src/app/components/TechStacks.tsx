@@ -36,7 +36,7 @@ export default function TechStacks() {
 
   return (
     <section className="mb-[108px]">
-      <h2 className="text-center text-sm md:text-lg">Technologies used</h2>
+      <h2 className="text-center text-sm md:text-lg">Technologies I use</h2>
       <div className="relative mt-10 overflow-hidden">
         <div className="glassmorphism absolute -left-2 z-10 h-full w-[20px] lg:w-[30px] xl:w-[40px]" />
         <div className="glassmorphism absolute -right-2 z-10 h-full w-[20px] lg:w-[30px] xl:w-[40px]" />

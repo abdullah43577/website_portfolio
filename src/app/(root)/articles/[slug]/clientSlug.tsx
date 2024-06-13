@@ -46,7 +46,20 @@ export default function ClientSlug({ params }: ParamsProps) {
         </div>
 
         <div className="prose prose-lg prose-blue max-w-[800px] pt-[100px] xl:prose-xl lg:pt-[160px]">
-          <PortableText value={article.content} />
+          <PortableText
+            value={article.content}
+            components={{
+              types: {
+                image: ({ value }) => (
+                  <Image
+                    src={value.asset.url}
+                    alt={value.alt || ""}
+                    style={{ maxWidth: "100%" }}
+                  />
+                ),
+              },
+            }}
+          />
         </div>
       </div>
     </section>

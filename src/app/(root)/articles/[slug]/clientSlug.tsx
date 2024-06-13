@@ -54,8 +54,8 @@ export default function ClientSlug({ params }: ParamsProps) {
                 image: ({ value }) => (
                   <Image
                     src={urlFor(value.asset).url()}
-                    width={1200}
-                    height={1200}
+                    width={500}
+                    height={500}
                     alt={value.alt}
                     style={{ maxWidth: "100%" }}
                   />

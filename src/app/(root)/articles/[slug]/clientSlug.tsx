@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { getArticle } from "../../../../../sanity/sanity-utils";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
+import { urlFor } from "../../../../../sanity/config/client-config";
 
 export default function ClientSlug({ params }: ParamsProps) {
   const [article, setArticle] = useState<ArticleProps>({} as ArticleProps);
@@ -52,8 +53,10 @@ export default function ClientSlug({ params }: ParamsProps) {
               types: {
                 image: ({ value }) => (
                   <Image
-                    src={value.asset.url}
-                    alt={value.alt || ""}
+                    src={urlFor(value.asset).url()}
+                    width={1200}
+                    height={1200}
+                    alt={value.alt}
                     style={{ maxWidth: "100%" }}
                   />
                 ),

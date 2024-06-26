@@ -82,7 +82,9 @@ export default function Testimonials() {
                 <Image src={quoteImg} alt="quote svg" priority />
 
                 <div className="mt-4">
-                  <h3 className="text-[27px] font-bold leading-[130%] md:text-[36px]">
+                  <h3
+                    className={`text-[27px] font-bold leading-[130%] ${testimonials[current].message.split(" ").length <= 28 ? "md:text-[36px]" : "md:[30px]"}`}
+                  >
                     {testimonials[current].message}
                   </h3>
                   <div className="mt-10">

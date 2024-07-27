@@ -13,7 +13,7 @@ import Projects from "./components/HomeComp/Projects/Projects";
 import AnimatedSlide from "./components/HomeComp/Projects/Swiper";
 import { getProjects } from "../../sanity/sanity-utils";
 import { Project } from "../../types/Project";
-import TechStacks from "./components/TechStacks";
+// import TechStacks from "./components/TechStacks";
 import Articles from "./components/HomeComp/Articles";
 import { toast } from "react-toastify";
 
@@ -93,7 +93,7 @@ export default function ClientHome() {
             <div className="container mx-auto px-5 pt-5 lg:px-20">
               <Hero />
             </div>
-            <TechStacks />
+            {/* <TechStacks /> */}
             <div className="container mx-auto px-5 pt-5 lg:px-20">
               <Services />
               <Projects />

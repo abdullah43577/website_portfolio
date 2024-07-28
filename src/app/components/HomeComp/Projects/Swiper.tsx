@@ -40,6 +40,7 @@ export default function AnimatedSlide() {
     <>
       <div className="absolute mt-[100px] w-full cursor-pointer xl:right-0">
         <Swiper
+          key={projects.length}
           modules={[Autoplay, Navigation]}
           loop={true}
           breakpoints={{

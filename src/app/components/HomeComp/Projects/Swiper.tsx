@@ -1,5 +1,3 @@
-"use client";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import Image from "next/image";
@@ -46,38 +44,39 @@ export default function AnimatedSlide({ projects }: { projects: Project[] }) {
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
         >
-          {projects.map((project) => (
-            <SwiperSlide
-              key={project._id}
-              className="group md:min-w-[400px]"
-              onClick={() => handleNavigation(project.slug)}
-            >
-              <div className="w-full overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.alt}
-                  width={400}
-                  height={350}
-                  priority
-                  className="w-full transition-transform duration-300 group-hover:scale-[1.1] md:max-h-[273px]"
-                />
-              </div>
-              <div className="bg-white p-10">
-                <GradientTxt
-                  txt={project.title}
-                  className="text-[14px] font-bold tracking-[4px]"
-                  tagName="h5"
-                />
-                <h4 className="my-6 truncate text-[19px] font-bold leading-[110%] transition-opacity duration-300 group-hover:opacity-50">
-                  {project.tagline}
-                </h4>
-                <CustomNav
-                  txt="View Project"
-                  className="flex items-center gap-2 text-[14px] transition-opacity duration-300 group-hover:opacity-50"
-                />
-              </div>
-            </SwiperSlide>
-          ))}
+          {projects.length > 1 &&
+            projects.map((project) => (
+              <SwiperSlide
+                key={project._id}
+                className="group md:min-w-[400px]"
+                onClick={() => handleNavigation(project.slug)}
+              >
+                <div className="w-full overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.alt}
+                    width={400}
+                    height={350}
+                    priority
+                    className="w-full transition-transform duration-300 group-hover:scale-[1.1] md:max-h-[273px]"
+                  />
+                </div>
+                <div className="bg-white p-10">
+                  <GradientTxt
+                    txt={project.title}
+                    className="text-[14px] font-bold tracking-[4px]"
+                    tagName="h5"
+                  />
+                  <h4 className="my-6 truncate text-[19px] font-bold leading-[110%] transition-opacity duration-300 group-hover:opacity-50">
+                    {project.tagline}
+                  </h4>
+                  <CustomNav
+                    txt="View Project"
+                    className="flex items-center gap-2 text-[14px] transition-opacity duration-300 group-hover:opacity-50"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
 

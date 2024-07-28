@@ -11,11 +11,8 @@ import Footer from "./components/Footer/Footer";
 import GradientTxt from "./components/Reusables/GradientTxt";
 import Projects from "./components/HomeComp/Projects/Projects";
 import AnimatedSlide from "./components/HomeComp/Projects/Swiper";
-import { getProjects } from "../../sanity/sanity-utils";
-import { Project } from "../../types/Project";
 // import TechStacks from "./components/TechStacks";
 import Articles from "./components/HomeComp/Articles";
-import { toast } from "react-toastify";
 
 const Preloader = function () {
   return (
@@ -42,7 +39,6 @@ const Preloader = function () {
 
 export default function ClientHome() {
   const [isLoading, setIsLoading] = useState(true);
-  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     // run preloader once
@@ -57,18 +53,6 @@ export default function ClientHome() {
     } else {
       setIsLoading(false);
     }
-
-    //? fetch projects
-    const fetch = async function () {
-      try {
-        const projects = await getProjects();
-        setProjects(projects);
-      } catch (error) {
-        toast.error("Failed to fetch projects. Please try again later.");
-      }
-    };
-
-    fetch();
 
     // Clear preloader flag on page unload
     const handleBeforeUnload = () => {
@@ -99,7 +83,7 @@ export default function ClientHome() {
               <Projects />
             </div>
             <div className="relative h-[400px]">
-              <AnimatedSlide projects={projects} />
+              <AnimatedSlide />
             </div>
             <Articles />
             <OtherComponents />

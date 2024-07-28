@@ -1,17 +1,36 @@
+"use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Swiper as SwiperType } from "swiper";
 import GradientTxt from "../../Reusables/GradientTxt";
 import CustomNav from "../../Reusables/CustomNav";
 import type { Project } from "../../../../../types/Project";
 import { useRouter } from "next/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
+import { getProjects } from "../../../../../sanity/sanity-utils";
+import { toast } from "react-toastify";
 
-export default function AnimatedSlide({ projects }: { projects: Project[] }) {
+export default function AnimatedSlide() {
   const router = useRouter();
   const swiperRef = useRef<SwiperType | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    //? fetch projects
+    const fetch = async function () {
+      try {
+        const projects = await getProjects();
+        setProjects(projects);
+      } catch (error) {
+        toast.error("Failed to fetch projects. Please try again later.");
+      }
+    };
+
+    fetch();
+  }, []);
 
   const handleNavigation = function (slug: string) {
     router.push(`/projects/${slug}`);

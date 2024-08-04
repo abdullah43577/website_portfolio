@@ -37,8 +37,8 @@ export default function ContactDetails() {
     },
 
     {
-      name: "Instagram",
-      path: "https://www.instagram.com/officialayo540/",
+      name: "Linkedin",
+      path: "https://www.linkedin.com/in/ayo540",
     },
 
     {

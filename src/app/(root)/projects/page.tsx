@@ -34,10 +34,7 @@ export default async function Projects() {
         ) : (
           projects.map((project) => (
             <Link key={project._id} href={`/projects/${project.slug}`}>
-              <div
-                className="group relative flex max-w-[600px] cursor-pointer items-center justify-end xl:ml-40"
-                // onClick={() => handleNavigation(project.slug)}
-              >
+              <div className="group relative flex max-w-[600px] cursor-pointer items-center justify-end xl:ml-40">
                 <div className="overflow-hidden">
                   <Image
                     src={project.image}
@@ -54,7 +51,7 @@ export default async function Projects() {
                     txt={project.tagline}
                     className="text-[13px] font-bold tracking-[4px] md:text-sm xl:text-lg"
                   />
-                  <h2 className="my-2 text-xl font-bold leading-[100%] text-white md:my-8 md:text-[50px] xl:text-[54px]">
+                  <h2 className="my-2 truncate text-xl font-bold leading-[100%] text-white md:my-8 md:text-[50px] xl:text-[54px]">
                     {project.title}
                   </h2>
                   <CustomNav

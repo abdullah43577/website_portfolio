@@ -29,7 +29,7 @@ export const revalidate = 3600;
 
 export default async function ProjectDetails({ params }: Params) {
   const project = await getProject(params.slug);
-  const { currentProject, nextProject } = await getNextProject(params.slug);
+  const data = await getNextProject(params.slug);
 
   if (!project)
     toast.error("Error fetching project details, please try again later!");
@@ -61,33 +61,35 @@ export default async function ProjectDetails({ params }: Params) {
           <PortableText value={project?.content} />
         </div>
 
-        <Link href={`/projects/${nextProject.slug}`}>
-          <div
-            className="flex justify-center"
-            // onClick={handleNextProjectNavigation}
-          >
-            <div className="group mx-auto mt-10 inline-flex cursor-pointer items-center justify-center gap-3 bg-gradient-to-r from-purple-400 via-red-500 to-orange-600 bg-clip-text pb-4 text-center text-[30px] font-bold leading-[110%] text-transparent md:text-[50px] xl:text-[54px]">
-              <h2>Next Project</h2>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="red"
-                className="bi bi-chevron-double-right transition-transform duration-300 group-hover:translate-x-3"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"
-                />
-                <path
-                  fillRule="evenodd"
-                  d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"
-                />
-              </svg>
+        {data?.nextProject && (
+          <Link href={`/projects/${data?.nextProject.slug}`}>
+            <div
+              className="flex justify-center"
+              // onClick={handleNextProjectNavigation}
+            >
+              <div className="group mx-auto mt-10 inline-flex cursor-pointer items-center justify-center gap-3 bg-gradient-to-r from-purple-400 via-red-500 to-orange-600 bg-clip-text pb-4 text-center text-[30px] font-bold leading-[110%] text-transparent md:text-[50px] xl:text-[54px]">
+                <h2>Next Project</h2>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="red"
+                  className="bi bi-chevron-double-right transition-transform duration-300 group-hover:translate-x-3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"
+                  />
+                </svg>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        )}
       </div>
     </section>
   );

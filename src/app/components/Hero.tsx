@@ -6,7 +6,7 @@ import profImg from "../../../public/img2.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import resume from "../../../public/Abdullah Ayoola CV.pdf";
+import resume from "../../../public/Ayoola Abdullah CV.pdf";
 
 export default function Hero() {
   const MotionImage = motion(Image);

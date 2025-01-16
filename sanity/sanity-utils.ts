@@ -9,7 +9,7 @@ import { ArticleProps } from "../types/Articles";
 
 export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "project"] | order(_createdAt asc){
+    groq`*[_type == "project"] | order(_createdAt desc){
        _id,
       _createdAt,
       title,

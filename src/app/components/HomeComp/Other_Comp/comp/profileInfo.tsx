@@ -18,7 +18,7 @@ export default function ProfileInfo() {
       >
         <div>
           <GradientTxt
-            txt="FULLSTACK DEVELOPER"
+            txt="FRONTEND DEVELOPER"
             className="text-[22px] font-bold tracking-[4px]"
             tagName="h5"
           />

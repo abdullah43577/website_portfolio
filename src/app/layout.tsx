@@ -12,10 +12,10 @@ export const metadata: Metadata = {
     template: "%s | <ReactMode />",
   },
   description:
-    "Welcome to my professional portfolio repository! This project showcases my journey, skills, and projects as a fullstack developer. It serves as a central repository for all my work, experiences, and achievements in web development.",
+    "Welcome to my professional portfolio repository! This project showcases my journey, skills, and projects as a frontend developer. It serves as a central repository for all my work, experiences, and achievements in web development.",
   openGraph: {
     description:
-      "Welcome to my professional portfolio repository! This project showcases my journey, skills, and projects as a fullstack developer. It serves as a central repository for all my work, experiences, and achievements in web development.",
+      "Welcome to my professional portfolio repository! This project showcases my journey, skills, and projects as a frontend developer. It serves as a central repository for all my work, experiences, and achievements in web development.",
     images: [
       new URL("/opengraphImg.png", process.env.NEXT_PUBLIC_LIVE_URL as string)
         .href,

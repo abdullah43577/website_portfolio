@@ -1,7 +1,7 @@
 # My Professional Portfolio
 
 > [!Welcome]
-> Welcome to my professional portfolio repository! This project showcases my journey, skills, and projects as a fullstack developer. It serves as a central repository for all my work, experiences, and achievements in web development.
+> Welcome to my professional portfolio repository! This project showcases my journey, skills, and projects as a frontend developer. It serves as a central repository for all my work, experiences, and achievements in web development.
 
 ## Table of Contents
 
@@ -22,7 +22,7 @@ This portfolio is designed to showcase my projects, skills, and experiences in w
 
 - Central Repository: A single place to explore all my projects, testimonials, and relevant data.
 
-- Fullstack Development: Demonstrates proficiency in both frontend and backend technologies.
+- Frontend Development: Demonstrates proficiency in both frontend and backend technologies.
 
 - User-Centered Design: Focuses on creating intuitive and engaging user interfaces.
 

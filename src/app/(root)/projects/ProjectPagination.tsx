@@ -1,7 +1,6 @@
 import ReactPaginate from "react-paginate";
-import ChevronLeft from "../../../../public/svg/ChevronLeft.svg";
-import ChevronRight from "../../../../public/svg/ChevronRight.svg";
 import Image from "next/image";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 interface ProjectsPagination {
   pageCount: number;
@@ -18,12 +17,12 @@ export const ProjectPagination = ({
     <ReactPaginate
       previousLabel={
         <div className="flex size-[51px] items-center justify-center rounded-[8px] border-[0.5px] border-black">
-          <Image src={ChevronLeft} alt="chevron left icon" />
+          <ChevronLeftIcon />
         </div>
       }
       nextLabel={
         <div className="flex size-[51px] items-center justify-center rounded-[8px] border-[0.5px] border-black">
-          <Image src={ChevronRight} alt="chevron right icon" />
+          <ChevronRightIcon />
         </div>
       }
       breakLabel="..."

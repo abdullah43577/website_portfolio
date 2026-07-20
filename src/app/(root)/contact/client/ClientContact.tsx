@@ -4,6 +4,19 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
+import {
+  FaEnvelope,
+  FaPhone,
+  FaUser,
+  FaEnvelope as FaEmailIcon,
+  FaDollarSign,
+  FaPaperPlane,
+  FaLinkedin,
+  FaGithub,
+  FaTwitter,
+} from "react-icons/fa";
+import GradientTxt from "@/app/components/Reusables/GradientTxt";
+import CustomBtn from "@/app/components/Reusables/CustomBtn";
 
 function hasEmptyStrings(obj: any) {
   return Object.values(obj).some((value) => value === "");
@@ -65,164 +78,245 @@ export default function ClientContact() {
   };
 
   return (
-    <section>
-      <div className="container mx-auto mt-[80px] flex flex-col justify-between gap-10 px-5 pt-5 lg:px-20 xl:flex-row">
-        <div className="xl:w-[40%]">
-          <h2 className="text-[37px] font-bold md:text-[56px]">Get in touch</h2>
-          <p className="mb-10 mt-8 text-lg text-[#5c5c5c] md:text-xl">
-            Have a project in mind? Looking to partner or work together? Reach
-            out through the form and I'll get back to you in the next 48 hours.
+    <section className="py-20">
+      <div className="container mx-auto px-5 lg:px-20">
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <GradientTxt
+            tagName="h2"
+            txt="Let's Connect"
+            className="text-4xl font-bold md:text-5xl"
+          />
+          <p className="mt-3 text-gray-500">
+            Have a project in mind? Let's work together.
           </p>
-          <Link
-            href="mailto:officialayo540@gmail.com"
-            className="mb-4 flex items-center gap-2 text-xl font-bold text-[#5c5c5c]"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#5c5c5c"
-              className="bi bi-envelope"
-              viewBox="0 0 16 16"
-            >
-              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
-            </svg>
-            <span>officialayo540@gmail.com</span>
-          </Link>
-          <Link
-            href="tel:+2347089111679"
-            className="mb-8 flex items-center gap-2 text-xl font-bold text-[#5c5c5c]"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#5c5c5c"
-              className="bi bi-telephone"
-              viewBox="0 0 16 16"
-            >
-              <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
-            </svg>
-            <span>+234-7089-111-679</span>
-          </Link>
         </div>
 
-        <form
-          onSubmit={(e) => handleFormSubmit(e)}
-          className="max-w-[655px] xl:w-[60%]"
-        >
-          <div className="mb-6 flex flex-col gap-4 md:flex-row">
-            <div className="w-full">
-              <label htmlFor="First Name" className="font-bold">
-                First Name
-              </label>
-              <input
-                type="text"
-                placeholder="First Name"
-                name="firstName"
-                value={formData.firstName}
-                aria-label="First Name"
-                required
-                className="mt-4 w-full bg-[#f2f6f7] py-[28px] pl-[24px] pr-[12px] text-[#333] outline-none md:py-[20px]"
-                onChange={(e) => handleFormUpdate(e)}
-              />
-            </div>
+        <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
+          {/* Left Column - Contact Info */}
+          <div className="lg:w-[35%]">
+            <div className="sticky top-24">
+              <h2 className="text-3xl font-bold md:text-4xl">Get in touch</h2>
+              <p className="mb-10 mt-4 text-gray-600 md:text-lg">
+                Have a project in mind? Looking to partner or work together?
+                Reach out through the form and I'll get back to you in the next
+                48 hours.
+              </p>
 
-            <div className="w-full">
-              <label htmlFor="Last Name" className="font-bold">
-                Last Name
-              </label>
-              <input
-                type="text"
-                placeholder="Last Name"
-                name="lastName"
-                value={formData.lastName}
-                aria-label="Last Name"
-                required
-                className="mt-4 w-full bg-[#f2f6f7] py-[28px] pl-[24px] pr-[12px] text-[#333] outline-none md:py-[20px]"
-                onChange={(e) => handleFormUpdate(e)}
-              />
+              {/* Contact Cards */}
+              <div className="space-y-4">
+                <a
+                  href="mailto:officialayo540@gmail.com"
+                  className="group flex items-center gap-4 rounded-xl border border-gray-200 p-4 transition-all hover:border-gray-300 hover:shadow-md"
+                >
+                  <div className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-3 text-white">
+                    <FaEnvelope className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500">Email</p>
+                    <p className="font-medium text-gray-900 group-hover:text-gray-700">
+                      officialayo540@gmail.com
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  href="tel:+2347089111679"
+                  className="group flex items-center gap-4 rounded-xl border border-gray-200 p-4 transition-all hover:border-gray-300 hover:shadow-md"
+                >
+                  <div className="rounded-full bg-gradient-to-r from-green-500 to-teal-500 p-3 text-white">
+                    <FaPhone className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-500">Phone</p>
+                    <p className="font-medium text-gray-900 group-hover:text-gray-700">
+                      +234-7089-111-679
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              {/* Social Links */}
+              <div className="mt-8">
+                <p className="mb-4 text-sm font-medium text-gray-500">
+                  Connect with me
+                </p>
+                <div className="flex gap-3">
+                  <a
+                    href="https://github.com/abdullah43577"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full bg-gray-100 p-3 text-gray-600 transition-all hover:bg-gray-200 hover:text-gray-900"
+                  >
+                    <FaGithub className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/ayo540"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full bg-gray-100 p-3 text-gray-600 transition-all hover:bg-gray-200 hover:text-gray-900"
+                  >
+                    <FaLinkedin className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://x.com/officialayo540"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full bg-gray-100 p-3 text-gray-600 transition-all hover:bg-gray-200 hover:text-gray-900"
+                  >
+                    <FaTwitter className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="mb-6 w-full">
-            <label htmlFor="Email" className="font-bold">
-              Email
-            </label>
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              name="email"
-              value={formData.email}
-              aria-label="email"
-              required
-              className="mt-4 w-full bg-[#f2f6f7] py-[28px] pl-[24px] pr-[12px] text-[#333] outline-none md:py-[20px]"
-              onChange={(e) => handleFormUpdate(e)}
-            />
-          </div>
+          {/* Right Column - Form */}
+          <form
+            onSubmit={(e) => handleFormSubmit(e)}
+            className="flex-1 rounded-2xl bg-white p-6 shadow-lg md:p-8"
+          >
+            <h3 className="mb-6 text-2xl font-bold">Send a Message</h3>
 
-          <div className="mb-6 w-full">
-            <label htmlFor="budget" className="block font-bold">
-              Your Budget
-            </label>
-            <div className="relative mt-4 flex w-full items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="#666"
-                className="bi bi-currency-dollar absolute left-0"
-                viewBox="0 0 16 16"
+            <div className="mb-6 flex flex-col gap-4 md:flex-row">
+              <div className="w-full">
+                <label
+                  htmlFor="firstName"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  First Name
+                </label>
+                <div className="relative mt-2">
+                  <FaUser className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    name="firstName"
+                    id="firstName"
+                    value={formData.firstName}
+                    required
+                    className="w-full rounded-lg border border-gray-200 py-3 pl-10 pr-4 text-gray-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                    onChange={(e) => handleFormUpdate(e)}
+                  />
+                </div>
+              </div>
+
+              <div className="w-full">
+                <label
+                  htmlFor="lastName"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Last Name
+                </label>
+                <div className="relative mt-2">
+                  <FaUser className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    name="lastName"
+                    id="lastName"
+                    value={formData.lastName}
+                    required
+                    className="w-full rounded-lg border border-gray-200 py-3 pl-10 pr-4 text-gray-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                    onChange={(e) => handleFormUpdate(e)}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
               >
-                <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z" />
-              </svg>
-              <select
-                name="budget"
-                aria-label="budget"
-                required
-                className="w-full bg-[#f2f6f7] py-[28px] pl-[32px] pr-[24px] text-[#666] outline-none md:py-[20px]"
-                onChange={(e) => handleSelectedPricing(e)}
-              >
-                <option value="">Choose Your Budget</option>
-                <option value="0-500">0-500</option>
-                <option value="500-1k">500-1k</option>
-                <option value="1k-2k">1k-2k</option>
-                <option value="2k-5k">2k-5k</option>
-                <option value="5k-1k">5k-10k</option>
-                <option value="More than 10k">More than 10k</option>
-              </select>
+                Email Address
+              </label>
+              <div className="relative mt-2">
+                <FaEmailIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  name="email"
+                  id="email"
+                  value={formData.email}
+                  required
+                  className="w-full rounded-lg border border-gray-200 py-3 pl-10 pr-4 text-gray-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                  onChange={(e) => handleFormUpdate(e)}
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="mb-6 w-full">
-            <label htmlFor="message" className="font-bold">
-              Tell me a bit more what you're looking for?
-            </label>
-            <textarea
-              cols={30}
-              rows={10}
-              className="mt-4 w-full bg-[#f2f6f7] py-[28px] pl-[24px] pr-[12px] text-[#333] outline-none md:py-[20px]"
-              name="message"
-              value={formData.message}
-              aria-label="message"
-              required
-              placeholder="Enter your message here..."
-              onChange={(e) => handleFormUpdate(e)}
-            />
-          </div>
+            <div className="mb-6">
+              <label
+                htmlFor="budget"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Your Budget
+              </label>
+              <div className="relative mt-2">
+                <FaDollarSign className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                <select
+                  name="budget"
+                  id="budget"
+                  required
+                  className="w-full appearance-none rounded-lg border border-gray-200 py-3 pl-10 pr-10 text-gray-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                  onChange={(e) => handleSelectedPricing(e)}
+                  value={formData.budget}
+                >
+                  <option value="">Choose Your Budget</option>
+                  <option value="0-500">$0 - $500</option>
+                  <option value="500-1k">$500 - $1,000</option>
+                  <option value="1k-2k">$1,000 - $2,000</option>
+                  <option value="2k-5k">$2,000 - $5,000</option>
+                  <option value="5k-10k">$5,000 - $10,000</option>
+                  <option value="More than 10k">$10,000+</option>
+                </select>
+                <svg
+                  className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </div>
 
-          <div className="relative h-[60px] w-[200px] bg-gradient-to-r from-orange-400 via-red-500 to-purple-600">
-            <motion.button
-              initial={{ right: "8px", bottom: "8px" }}
-              whileHover={{ right: 0, bottom: 0 }}
+            <div className="mb-6">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Tell me more about your project
+              </label>
+              <div className="relative mt-2">
+                <textarea
+                  cols={30}
+                  rows={6}
+                  className="w-full rounded-lg border border-gray-200 px-4 py-3 text-gray-900 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                  name="message"
+                  id="message"
+                  value={formData.message}
+                  required
+                  placeholder="Tell me about your project, goals, and timeline..."
+                  onChange={(e) => handleFormUpdate(e)}
+                />
+              </div>
+            </div>
+
+            <CustomBtn
+              txt={isSending ? "Submitting..." : "Submit Now!"}
+              className="ml-auto w-[200px]"
               disabled={isSending}
-              aria-label={isSending ? "Sending message" : "Send message"}
-              className="absolute h-[60px] w-[200px] bg-black text-lg font-medium text-white"
-            >
-              {isSending ? "Submitting..." : "Submit Now!"}
-            </motion.button>
-          </div>
-        </form>
+              type="submit"
+            />
+          </form>
+        </div>
       </div>
     </section>
   );

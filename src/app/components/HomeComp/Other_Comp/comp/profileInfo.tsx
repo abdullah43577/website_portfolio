@@ -2,16 +2,7 @@
 
 import GradientTxt from "../../../Reusables/GradientTxt";
 import FadeUp from "@/animations/FadeUp";
-import { motion } from "framer-motion";
-
-const stack = [
-  "React / Next.js",
-  "React Native",
-  "Node.js / Express",
-  "PostgreSQL",
-  "MongoDB",
-  "TypeScript",
-];
+import TechStacks from "@/app/components/TechStacks";
 
 const stats = [
   { value: "4+", label: "Years of experience" },
@@ -63,26 +54,7 @@ export default function ProfileInfo() {
       </FadeUp>
 
       {/* tech stack badges */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-wrap gap-3"
-      >
-        {stack.map((tech, i) => (
-          <motion.span
-            key={tech}
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="rounded-full border border-[#e5e5e5] px-5 py-2 text-sm font-medium text-[#333] md:text-base"
-          >
-            {tech}
-          </motion.span>
-        ))}
-      </motion.div>
+      <TechStacks />
     </section>
   );
 }

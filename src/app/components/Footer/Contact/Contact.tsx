@@ -1,6 +1,13 @@
 import Link from "next/link";
 import GradientTxt from "../../Reusables/GradientTxt";
 import FadeUp from "@/animations/FadeUp";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 export default function ContactDetails() {
   const date = new Date().getFullYear();
@@ -9,46 +16,47 @@ export default function ContactDetails() {
     {
       name: "About",
       path: "/#about",
+      icon: null,
     },
-
     {
       name: "Services",
       path: "/#services",
+      icon: null,
     },
-
     {
       name: "Experience",
       path: "/#experience",
+      icon: null,
     },
-
     {
       name: "Contact",
       path: "/contact",
+      icon: null,
     },
-
     {
       name: "Articles",
       path: "/articles",
+      icon: null,
     },
-
     {
       name: "Projects",
       path: "/projects",
+      icon: null,
     },
-
     {
-      name: "Linkedin",
+      name: "LinkedIn",
       path: "https://www.linkedin.com/in/ayo540",
+      icon: FaLinkedin,
     },
-
     {
       name: "Twitter",
       path: "https://x.com/officialayo540",
+      icon: FaTwitter,
     },
-
     {
-      name: "Github",
+      name: "GitHub",
       path: "https://github.com/abdullah43577",
+      icon: FaGithub,
     },
   ];
 
@@ -71,43 +79,83 @@ export default function ContactDetails() {
             {" <React"}
             <GradientTxt tagName="span" txt="Mode />." />
           </h2>
-          <p className="py-2 text-[#8a95ad]">Lagos, Nigeria</p>
-          <div className="flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#8a95ad"
-              className="bi bi-envelope"
-              viewBox="0 0 16 16"
-            >
-              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
-            </svg>
+
+          <div className="mt-3 flex items-center gap-2 text-[#8a95ad]">
+            <FaMapMarkerAlt className="h-4 w-4" />
+            <span className="text-sm">Lagos, Nigeria</span>
+          </div>
+
+          <div className="mt-2 flex items-center gap-3">
+            <FaEnvelope className="h-4 w-4 text-[#8a95ad]" />
             <Link
               href="mailto:officialayo540@gmail.com"
               target="_blank"
-              className="text-[17px] font-bold text-[#8a95ad]"
+              className="text-[15px] font-medium text-[#8a95ad] transition-colors duration-300 hover:text-white"
             >
               officialayo540@gmail.com
             </Link>
           </div>
+
+          {/* Social Icons - New Section */}
+          <div className="mt-6 flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/in/ayo540"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-white/10 p-2.5 text-white transition-all duration-300 hover:scale-110 hover:bg-white/20"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin className="h-5 w-5" />
+            </a>
+            <a
+              href="https://x.com/officialayo540"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-white/10 p-2.5 text-white transition-all duration-300 hover:scale-110 hover:bg-white/20"
+              aria-label="Twitter"
+            >
+              <FaTwitter className="h-5 w-5" />
+            </a>
+            <a
+              href="https://github.com/abdullah43577"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-white/10 p-2.5 text-white transition-all duration-300 hover:scale-110 hover:bg-white/20"
+              aria-label="GitHub"
+            >
+              <FaGithub className="h-5 w-5" />
+            </a>
+          </div>
         </div>
 
         <div className="mt-16 grid grid-cols-2 gap-8 xl:mt-0 xl:grid-cols-3 xl:gap-10">
-          {navLinks.map((link, i) => (
-            <Link
-              key={i}
-              href={link.path}
-              target={link.path.startsWith("http") ? "_blank" : "_self"}
-              className="links sharedStyles border-b border-[#8a95ad] pb-4 text-white md:text-xl xl:border-none xl:pb-0"
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link, i) => {
+            const Icon = link.icon;
+            return (
+              <Link
+                key={i}
+                href={link.path}
+                target={link.path.startsWith("http") ? "_blank" : "_self"}
+                rel={
+                  link.path.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className={`links sharedStyles flex items-center gap-2 border-b border-[#8a95ad] pb-4 text-white transition-all duration-300 hover:pl-2 hover:text-gray-300 xl:border-none xl:pb-0 ${
+                  Icon ? "hover:scale-105" : ""
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  {Icon && <Icon className="h-4 w-4" />}
+                  <span className="block md:text-xl">{link.name}</span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
 
-      <p className="pb-10 pt-[100px] text-center text-[#8a95ad]">
+      <p className="pb-10 pt-[100px] text-center text-sm text-[#8a95ad] md:text-base">
         Copyright &copy; {date}{" "}
         <GradientTxt tagName="span" txt="<ReactMode/>." /> all rights reserved.
         Built using NextJS, Typescript, TailwindCSS, Framer motion, Sanity and

@@ -44,7 +44,7 @@ export default function Header() {
             {/* Logo */}
             <Link
               href="/"
-              className="text-[15px] font-medium italic sm:text-base md:text-[24px] lg:font-bold"
+              className="text-xl font-medium italic md:text-2xl lg:font-bold"
             >
               {"<React"}
               <GradientTxt tagName="span" txt="Mode />." />

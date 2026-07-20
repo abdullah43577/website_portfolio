@@ -1,15 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import CustomBtn from "./Reusables/CustomBtn";
 import GradientTxt from "./Reusables/GradientTxt";
+import ResumeModal from "./ResumeModal";
 import profImg from "../../../public/img2.jpg";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import resume from "../../../public/Abdullah Ayoola CV.pdf";
 
 export default function Hero() {
   const MotionImage = motion(Image);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
     <section className="my-[80px] items-center gap-16 xl:flex">
@@ -30,14 +32,12 @@ export default function Hero() {
 
         <div className="mb-16 flex flex-col gap-4 md:flex-row xl:items-center">
           <CustomBtn txt="Book a call" className="w-[150px]" href="/contact" />
-          <Link
-            href={resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            download="Abdullah_Resume.pdf"
+
+          <button
+            onClick={() => setIsResumeOpen(true)}
             className="group flex cursor-pointer items-center gap-2 text-lg font-bold"
           >
-            <span>Download CV</span>
+            <span>View CV</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -51,7 +51,7 @@ export default function Hero() {
                 d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
               />
             </svg>
-          </Link>
+          </button>
         </div>
       </motion.div>
 
@@ -63,6 +63,13 @@ export default function Hero() {
         alt="profile image"
         className="mx-auto w-full rounded-full lg:w-[500px]"
         priority
+      />
+
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+        resumeUrl={resume}
+        fileName="Abdullah_Resume.pdf"
       />
     </section>
   );

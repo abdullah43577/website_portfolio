@@ -52,7 +52,7 @@ export default function Articles() {
   }, []);
 
   return (
-    <section className="mb-[80px] bg-black">
+    <section className="mb-[80px] mt-40 bg-black md:mt-0">
       <div className="container mx-auto flex flex-col items-start justify-between gap-10 px-5 pb-[100px] pt-[300px] md:flex-row md:gap-2 lg:px-20">
         <div
           id="left-content"

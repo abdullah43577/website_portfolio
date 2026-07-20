@@ -5,6 +5,7 @@ export interface Education {
   description: string;
   year: string;
   type: "edu" | "work";
+  isCurrent: boolean;
 }
 
 export interface Work extends Education {

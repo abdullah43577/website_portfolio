@@ -104,15 +104,17 @@ export async function getExperiences(): Promise<{
 }> {
   return createClient(clientConfig).fetch(
     groq`{
-  "education": *[_type == "experience" && type == "edu"] | order(_createdAt asc) {
+  "education": *[_type == "experience" && type == "edu"] | order(coalesce(isCurrent, false) desc, coalesce(startDate, "1900-01") desc) {
     _id,
     _createdAt,
     title,
     description,
     year,
+    startDate,
+    isCurrent,
     type
   },
-  "work": *[_type == "experience" && type == "work"] | order(_createdAt asc) {
+  "work": *[_type == "experience" && type == "work"] | order(coalesce(isCurrent, false) desc, coalesce(startDate, "1900-01") desc) {
     _id,
     _createdAt,
     title,
@@ -120,6 +122,8 @@ export async function getExperiences(): Promise<{
     "icon": icon.asset->url,
     "alt": icon.alt,
     year,
+    startDate,
+    isCurrent,
     type
   }
 }

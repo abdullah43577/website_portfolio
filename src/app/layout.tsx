@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Bricolage_Grotesque } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { seoKeywords } from "./seoKeywords";
+
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_LIVE_URL as string),
@@ -29,7 +35,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`h-full bg-gray-200 antialiased ${bricolage.variable}`}
+    >
       <head>
         <link rel="icon" href="/icon.png" sizes="32" />
       </head>

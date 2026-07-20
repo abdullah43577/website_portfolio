@@ -1,5 +1,5 @@
-@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css");
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+/* @import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"); */
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +9,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Plus Jakarta Display", "Inter", sans-serif;
+  /* font-family: "Plus Jakarta Display", "Inter", sans-serif; */
+  /* font-family: "Bricolage Grotesque", sans-serif; */
 }
 
 .dancingScript {
@@ -19,6 +20,7 @@
 html,
 body {
   scroll-behavior: smooth;
+  font-family: var(--font-bricolage), sans-serif;
 }
 
 .links,

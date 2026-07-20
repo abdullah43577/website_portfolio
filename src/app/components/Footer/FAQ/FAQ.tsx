@@ -2,14 +2,61 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import FadeUp from "@/animations/FadeUp";
-import type { FAQ } from "../../../../../types/FAQ";
+import type { FAQ as FAQType } from "../../../../../types/FAQ";
 import { getFAQ } from "../../../../../sanity/sanity-utils";
 import { toast } from "react-toastify";
 
+interface FAQItemProps {
+  faq: FAQType;
+  isOpen: boolean;
+  onToggle: (id: string) => void;
+}
+
+function FAQItem({ faq, isOpen, onToggle }: FAQItemProps) {
+  const panelId = `faq-panel-${faq._id}`;
+
+  return (
+    <FadeUp tag="div" className="border-b border-[#666] pb-5">
+      <button
+        type="button"
+        className="flex w-full cursor-pointer items-center justify-between pb-5 text-left"
+        onClick={() => onToggle(faq._id)}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+      >
+        <span className="text-xl text-white md:text-2xl">{faq.question}</span>
+        <ChevronDown
+          size={16}
+          className={`shrink-0 text-white transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+          aria-hidden="true"
+        />
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            id={panelId}
+            role="region"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <p className="text-[17px] text-[#666] md:text-[18px]">
+              {faq.answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </FadeUp>
+  );
+}
+
 export default function FAQ() {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [faqs, setFaqs] = useState<FAQ[]>([]);
+  const [faqs, setFaqs] = useState<FAQType[]>([]);
 
   useEffect(() => {
     const fetchData = async function () {
@@ -28,95 +75,26 @@ export default function FAQ() {
   };
 
   return (
-    // grid gap-10 lg:grid-cols-2
     <section className="flex flex-col justify-between gap-10 xl:flex-row">
       <div className="flex min-w-[50%] flex-col gap-10">
         {faqs.slice(0, 4).map((faq) => (
-          <FadeUp
+          <FAQItem
             key={faq._id}
-            tag="div"
-            className="border-b border-[#666] pb-5"
-          >
-            <div
-              className="flex cursor-pointer items-center justify-between pb-5"
-              onClick={() => toggleActive(faq._id)}
-            >
-              <p className="text-xl text-white md:text-2xl">{faq.question}</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="white"
-                className={`bi bi-chevron-down transition-transform duration-300 ${activeId === faq._id ? "rotate-180" : ""}`}
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
-                />
-              </svg>
-            </div>
-
-            <AnimatePresence initial={false}>
-              {activeId === faq._id && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <p className="text-[17px] text-[#666] md:text-[18px]">
-                    {faq.answer}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </FadeUp>
+            faq={faq}
+            isOpen={activeId === faq._id}
+            onToggle={toggleActive}
+          />
         ))}
       </div>
 
       <div className="flex min-w-[50%] flex-col gap-10">
         {faqs.slice(4, 8).map((faq) => (
-          <FadeUp
+          <FAQItem
             key={faq._id}
-            tag="div"
-            className="border-b border-[#666] pb-5"
-          >
-            <div
-              className="flex cursor-pointer items-center justify-between pb-5"
-              onClick={() => toggleActive(faq._id)}
-            >
-              <p className="text-xl text-white md:text-2xl">{faq.question}</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="white"
-                className={`bi bi-chevron-down transition-transform duration-300 ${activeId === faq._id ? "rotate-180" : ""}`}
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
-                />
-              </svg>
-            </div>
-
-            <AnimatePresence initial={false}>
-              {activeId === faq._id && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <p className="text-[17px] text-[#666] md:text-[18px]">
-                    {faq.answer}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </FadeUp>
+            faq={faq}
+            isOpen={activeId === faq._id}
+            onToggle={toggleActive}
+          />
         ))}
       </div>
     </section>

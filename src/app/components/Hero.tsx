@@ -20,14 +20,16 @@ export default function Hero() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="mb-4 text-[40px] font-bold leading-[110%] md:text-[68px] lg:text-[70px]">
-          <GradientTxt tagName="span" txt="I develop frontend" /> solutions that
-          delight and inspire users.
+        <h1 className="mb-4 text-2xl font-bold md:text-4xl lg:text-6xl">
+          <GradientTxt tagName="span" txt="I develop Fullstack" /> solutions
+          that delight and inspire users.
         </h1>
 
-        <p className="mb-16 text-[19px] text-[#666] lg:text-[22px]">
-          Hi! I'm Abdullah, a Frontend Developer based in Nigeria. I create
-          user-friendly interfaces for fast-growing startups.
+        <p className="mb-16 text-sm text-[#666] lg:text-xl">
+          Hi! I'm Abdullah, a Fullstack Developer Experienced in building
+          responsive, user-centric applications with clean, maintainable code —
+          from architecting APIs and database schemas to crafting polished
+          interfaces — while bringing product concepts into reality.
         </p>
 
         <div className="mb-16 flex flex-col gap-4 md:flex-row xl:items-center">

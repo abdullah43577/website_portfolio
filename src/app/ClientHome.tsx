@@ -10,9 +10,10 @@ import OtherComponents from "./components/HomeComp/Other_Comp/OtherComponents";
 import Footer from "./components/Footer/Footer";
 import GradientTxt from "./components/Reusables/GradientTxt";
 import Projects from "./components/HomeComp/Projects/Projects";
-import AnimatedSlide from "./components/HomeComp/Projects/Swiper";
+import AnimatedSlide from "./components/HomeComp/Projects/AnimatedSlide";
 // import TechStacks from "./components/TechStacks";
 import Articles from "./components/HomeComp/Articles";
+import TechStacks from "./components/TechStacks";
 
 const Preloader = function () {
   return (

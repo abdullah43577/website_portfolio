@@ -4,6 +4,7 @@ import quoteImg from "../../../../../../public/quote.svg";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import GradientTxt from "../../../Reusables/GradientTxt";
 import FadeUp from "@/animations/FadeUp";
 import type { Testimonials } from "../../../../../../types/Testimonials";
@@ -12,6 +13,7 @@ import { toast } from "react-toastify";
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [testimonials, setTestimonials] = useState<Testimonials[]>([]);
 
   useEffect(() => {
@@ -27,19 +29,21 @@ export default function Testimonials() {
   }, []);
 
   const handleNext = () => {
+    setDirection(1);
     setCurrent((prev) => (prev + 1) % testimonials.length);
   };
 
   const handlePrev = () => {
+    setDirection(-1);
     setCurrent(
       (prev) => (prev - 1 + testimonials.length) % testimonials.length,
     );
   };
 
   const variants = {
-    enter: { opacity: 0 },
-    center: { opacity: 1 },
-    exit: { opacity: 0 },
+    enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 60 : -60 }),
+    center: { opacity: 1, x: 0 },
+    exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -60 : 60 }),
   };
 
   return (
@@ -57,17 +61,17 @@ export default function Testimonials() {
 
       {/* animation container */}
       <div className="relative mt-10 flex max-w-full flex-col items-center justify-center xl:h-[400px] xl:flex-row">
-        {testimonials.length && (
-          <AnimatePresence initial={false} mode="wait">
+        {testimonials.length > 0 && (
+          <AnimatePresence initial={false} mode="wait" custom={direction}>
             <motion.div
               key={current}
               className="flex flex-col items-end xl:flex-row xl:gap-[100px]"
-              custom={current}
+              custom={direction}
               initial="enter"
               animate="center"
               exit="exit"
               variants={variants}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
               <Image
                 src={testimonials[current].image}
@@ -83,7 +87,7 @@ export default function Testimonials() {
 
                 <div className="mt-4">
                   <h3
-                    className={`text-[27px] font-bold leading-[130%] ${testimonials[current].message.split(" ").length <= 28 ? "md:text-[36px]" : "md:[30px]"}`}
+                    className={`text-[27px] font-bold leading-[130%] ${testimonials[current].message.split(" ").length <= 28 ? "md:text-[36px]" : "md:text-[30px]"}`}
                   >
                     {testimonials[current].message}
                   </h3>
@@ -101,45 +105,40 @@ export default function Testimonials() {
           </AnimatePresence>
         )}
 
-        <div className="absolute bottom-0 right-0 ml-auto mt-4 flex h-[60px] w-[80px] items-center justify-between bg-black p-2">
-          <div
-            className="flex h-full w-1/2 cursor-pointer items-center justify-start"
-            onClick={handlePrev}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="white"
-              className="bi bi-chevron-left"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fillRule="evenodd"
-                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
-              />
-            </svg>
-          </div>
+        {testimonials.length > 0 && (
+          <div className="absolute bottom-0 right-0 ml-auto mt-4 flex h-[60px] items-center gap-3 bg-black px-4">
+            <span className="text-xs font-medium tabular-nums text-[#8a95ad]">
+              {String(current + 1).padStart(2, "0")} /{" "}
+              {String(testimonials.length).padStart(2, "0")}
+            </span>
 
-          <div
-            className="flex h-full w-1/2 cursor-pointer items-center justify-end"
-            onClick={handleNext}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="white"
-              className="bi bi-chevron-right"
-              viewBox="0 0 16 16"
+            <button
+              type="button"
+              aria-label="Previous testimonial"
+              className="flex h-full cursor-pointer items-center justify-center"
+              onClick={handlePrev}
             >
-              <path
-                fillRule="evenodd"
-                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+              <ChevronLeft
+                size={16}
+                className="text-white"
+                aria-hidden="true"
               />
-            </svg>
+            </button>
+
+            <button
+              type="button"
+              aria-label="Next testimonial"
+              className="flex h-full cursor-pointer items-center justify-center"
+              onClick={handleNext}
+            >
+              <ChevronRight
+                size={16}
+                className="text-white"
+                aria-hidden="true"
+              />
+            </button>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

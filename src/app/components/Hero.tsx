@@ -15,7 +15,7 @@ export default function Hero() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <section className="my-20 items-center gap-16 xl:flex">
+    <section className="my-10 items-center gap-16 md:my-20 xl:flex">
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

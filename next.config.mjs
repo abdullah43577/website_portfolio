@@ -1,21 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+  poweredByHeader: false,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.sanity.io",
-        port: "",
-      },
-    ],
-  },
-
-  webpack: (config, options) => {
-    config.module.rules.push({
-      test: /\.(pdf)$/,
-      type: "asset/resource",
-    });
-    return config;
+    formats: ["image/avif", "image/webp"],
   },
 };
 

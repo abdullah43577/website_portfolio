@@ -1,26 +1,30 @@
-"use client";
-
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header";
-import CustomBtn from "./components/Reusables/CustomBtn";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
 
 export default function NotFound() {
   return (
-    <>
-      <Header />
-      <div className="container mx-auto flex h-[90vh] flex-col items-center justify-center px-5 pt-5 lg:px-20">
-        <h2 className="mb-2 text-[80px] font-bold tracking-[0.5px] md:text-[160px]">
-          404
-        </h2>
-        <h2 className="mb-8 text-[30px] font-bold italic md:text-[76px]">
-          Page Not Found
-        </h2>
-        <p className="mb-8 text-center text-xl leading-[140%] text-[#152c5b]">
-          The page you're looking for doesn't exist or has been moved
+    <Container>
+      <div className="flex min-h-[60vh] flex-col justify-center py-24">
+        <p className="label-mono">Error 404</p>
+        <h1 className="text-title mt-5 max-w-[16ch] font-medium text-fg">
+          This page doesn&apos;t exist.
+        </h1>
+        <p className="text-subtitle mt-5 max-w-prose text-fg-muted">
+          The link is either out of date or was never right. The work is all
+          still here.
         </p>
-        <CustomBtn txt="Go back to home" className="w-[250px]" href="/" />
+
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button href="/">
+            Back home
+            <ArrowRight className="h-4 w-4" strokeWidth={1.8} />
+          </Button>
+          <Button href="/projects" variant="secondary">
+            Browse the work
+          </Button>
+        </div>
       </div>
-      <Footer />
-    </>
+    </Container>
   );
 }

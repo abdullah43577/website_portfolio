@@ -1,56 +1,111 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import {
+  Instrument_Sans,
+  Instrument_Serif,
+  JetBrains_Mono,
+} from "next/font/google";
 import "./globals.css";
-import { Bricolage_Grotesque, Dancing_Script } from "next/font/google";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { seoKeywords } from "./seoKeywords";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
+import { baseUrl, site } from "@/content/site";
+import { THEME_COLORS, themeScript } from "@/lib/theme-script";
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+const sans = Instrument_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const dancingScript = Dancing_Script({
-  variable: "--font-dancing-script",
+const serif = Instrument_Serif({
+  variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
+  style: ["italic", "normal"],
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_LIVE_URL as string),
-  keywords: seoKeywords,
+  metadataBase: new URL(baseUrl),
   title: {
-    default: "Home | <ReactMode />",
-    template: "%s | <ReactMode />",
+    default: `${site.name} — ${site.role}`,
+    template: `%s · ${site.name}`,
   },
-  description:
-    "Welcome to my professional portfolio repository! This project showcases my journey, skills, and projects as a frontend developer. It serves as a central repository for all my work, experiences, and achievements in web development.",
+  description: site.description,
+  authors: [{ name: site.name, url: baseUrl }],
+  creator: site.name,
   openGraph: {
-    description:
-      "Welcome to my professional portfolio repository! This project showcases my journey, skills, and projects as a frontend developer. It serves as a central repository for all my work, experiences, and achievements in web development.",
-    images: [
-      new URL("/opengraphImg.png", process.env.NEXT_PUBLIC_LIVE_URL as string)
-        .href,
-    ], // image to be shown of website when linked to different sources
+    type: "website",
+    locale: "en_NG",
+    url: baseUrl,
+    siteName: site.name,
+    title: `${site.name} — ${site.role}`,
+    description: site.description,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.role}`,
+    description: site.description,
+    creator: "@officialayo540",
+  },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: THEME_COLORS.light },
+    { media: "(prefers-color-scheme: dark)", color: THEME_COLORS.dark },
+  ],
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.role,
+  email: `mailto:${site.email}`,
+  url: baseUrl,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lagos",
+    addressCountry: "NG",
+  },
+  sameAs: site.socials.map((social) => social.href),
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
-      className={`h-full bg-gray-200 antialiased ${bricolage.variable} ${dancingScript.variable}`}
+      suppressHydrationWarning
+      className={`${sans.variable} ${serif.variable} ${mono.variable}`}
     >
       <head>
-        <link rel="icon" href="/icon.png" sizes="32" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
       </head>
-      <body suppressHydrationWarning>
-        {children}
-        <ToastContainer />
+      <body>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:border focus:border-border focus:bg-surface focus:px-4 focus:py-2 focus:text-sm"
+        >
+          Skip to content
+        </a>
+        <SiteHeader />
+        <main id="main">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );

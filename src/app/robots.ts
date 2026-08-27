@@ -1,12 +1,9 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { baseUrl } from "@/content/site";
 
-// only set disllowed routes
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: "*",
-      disallow: ["/admin/"],
-    },
-    sitemap: `${process.env.NEXT_PUBLIC_LIVE_URL}/sitemap.xml`,
+    rules: { userAgent: "*", allow: "/" },
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

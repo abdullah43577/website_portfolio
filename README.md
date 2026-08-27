@@ -1,107 +1,71 @@
-# My Professional Portfolio
+# Portfolio — Abdullah Ayoola
 
-> [!Welcome]
-> Welcome to my professional portfolio repository! This project showcases my journey, skills, and projects as a frontend developer. It serves as a central repository for all my work, experiences, and achievements in web development.
+Personal site of a fullstack engineer working across web, mobile and backend.
+Next.js App Router, TypeScript, Tailwind — fully static, no CMS.
 
-## Table of Contents
+**[CLAUDE.md](./CLAUDE.md) is the working agreement for this repo.** It carries the design
+system, the content model, the file-size rules and the gotchas. Read it before changing
+anything.
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Content Management](#content-management)
-- [Contact](#contact)
+## Run it
 
-### Introduction
-
-This portfolio is designed to showcase my projects, skills, and experiences in web development. It highlights my proficiency in frontend and backend technologies, my approach to creating user-centered designs, and my continuous learning journey.
-
-### Features
-
-- Central Repository: A single place to explore all my projects, testimonials, and relevant data.
-
-- Frontend Development: Demonstrates proficiency in both frontend and backend technologies.
-
-- User-Centered Design: Focuses on creating intuitive and engaging user interfaces.
-
-- Continuous Learning: Reflects my commitment to staying updated with the latest industry trends.
-
-- Data Management: Uses Sanity CMS to manage and store all content.
-
-### Technologies Used
-
-- Frontend
-
-  - NextJS
-  - Typescript
-  - Tailwind
-
-- Backend
-
-  - NodeJS (for handling contact form submissions)
-
-- Content Management
-
-  - Sanity
-
-- Tools & Platform
-  - Git & Github
-  - Vercel
-
-### Project Structure
-
-```
-website_portfolio/
-│
-├── public/
-│ ├── index.html
-│ └── assets/
-│ └── ... (other assets and images)
-│
-├── sanity/
-│ ├── config/
-│ │ └── client-config.ts
-│ ├── schema/
-│ │ └── ... (various schema files)
-│ └── sanity-utils.ts
-│
-├── src/
-│ ├── animations/
-│ │ └── fadeUp.tsx
-│ ├── app/
-│ │ └── ... (other files and folders within src)
-│ └── ... (other nested files and folders within src)
-│
-├── types/
-│ └── ... (type definitions)
-│
-├── .env.example
-├── .gitignore
-├── .prettierrc
-├── ... (other files and folders)
-└── README.md
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run format   # prettier
 ```
 
-### Content Management
+## Environment
 
-All project data, testimonials, pictures, FAQs, and other content are managed and stored using Sanity CMS. This ensures that the information is well-organized, easily accessible, and up-to-date.
+Copy `.env.example` to `.env` and fill in:
 
-#### Adding New Content
+| Variable                   | Purpose                                                            |
+| -------------------------- | ------------------------------------------------------------------ |
+| `NEXT_PUBLIC_LIVE_URL`     | Deployed base URL — metadata, sitemap, robots                      |
+| `NEXT_PUBLIC_API_ENDPOINT` | External mail service the contact form POSTs to (`POST /sendMail`) |
 
-- Log in to the Sanity CMS.
+Both are optional in development; the base URL falls back to the production domain.
 
-- Navigate to the relevant section (Projects, Testimonials, etc.).
+## Editing content
 
-- Add or update the content as needed.
+There is no CMS. Everything the site says lives in `src/content/` as typed TypeScript:
 
-- Save and publish the changes.
+| File              | Holds                                         |
+| ----------------- | --------------------------------------------- |
+| `site.ts`         | Name, role, email, socials, nav, availability |
+| `profile.ts`      | About narrative, working principles, stats    |
+| `projects.ts`     | Every project and case study                  |
+| `capabilities.ts` | Services offered                              |
+| `stack.ts`        | Tech, grouped by layer                        |
+| `experience.ts`   | Roles and education                           |
+| `open-source.ts`  | Published npm packages                        |
+| `testimonials.ts` | Quotes                                        |
+| `faq.ts`          | Questions                                     |
 
-### Contact
+Adding a project means appending one object to `projects.ts`. The route, the case-study
+page and the sitemap entry all follow automatically — set `featured: true` to surface it
+on the home page.
 
-If you have any questions, suggestions, or feedback, feel free to reach out to me:
+## Structure
 
-Email: officialayo540@gmail.com
-[LinkedIn](https://linkedin.com/in/ayo540)
-X: @officialayo540
+```
+src/
+  app/          routes: /, /projects, /projects/[slug], /contact
+  components/
+    layout/     header, mobile nav, theme toggle, footer
+    home/       home page sections
+    projects/   cards, index, case-study parts
+    contact/    form and channels
+    ui/         shared primitives
+    icons/      brand SVGs
+  content/      the entire content layer
+  hooks/        use-theme, use-scroll-lock
+  lib/          utils, theme script
+```
+
+## Theme
+
+Light and dark, `class` strategy on `<html>`, persisted to `localStorage`, defaulting to
+the system preference. Colours are CSS custom properties defined once in `globals.css` and
+consumed through Tailwind — never hardcode a hex in a component.

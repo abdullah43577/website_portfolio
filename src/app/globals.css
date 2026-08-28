@@ -94,6 +94,16 @@
     @apply font-mono text-[11px] uppercase tracking-[0.14em] text-fg-subtle;
   }
 
+  /* The §1 gradient exception: a mask softening the end of a scroll strip. */
+  .scroll-fade-r {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      #000 calc(100% - 1.5rem),
+      transparent
+    );
+    mask-image: linear-gradient(to right, #000 calc(100% - 1.5rem), transparent);
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

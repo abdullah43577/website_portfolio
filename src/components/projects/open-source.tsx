@@ -15,7 +15,7 @@ export function OpenSource() {
 
       <div className="grid gap-4 md:grid-cols-2 md:gap-5">
         {packages.map((pkg, i) => (
-          <Reveal key={pkg.name} delay={i * 0.06} className="h-full">
+          <Reveal key={pkg.name} delay={i * 0.06} className="h-full min-w-0">
             <PackageCard pkg={pkg} />
           </Reveal>
         ))}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
-import portrait from "../../../public/img2.jpg";
+import avatar from "../../../public/avatar.png";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { site } from "@/content/site";
@@ -14,13 +14,13 @@ export function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_440px] lg:gap-20 xl:grid-cols-[1fr_480px] xl:gap-24">
           <div>
             <div className="mb-8 flex items-center gap-4">
-              <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-border lg:hidden">
+              <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full lg:hidden">
                 <Image
-                  src={portrait}
+                  src={avatar}
                   alt=""
                   fill
                   sizes="44px"
-                  className="object-cover"
+                  className="object-cover dark:invert"
                   priority
                 />
               </span>

@@ -94,6 +94,15 @@
     @apply font-mono text-[11px] uppercase tracking-[0.14em] text-fg-subtle;
   }
 
+  /* invert() must run before brightness(), but Tailwind composes its filter
+     utilities in the opposite order — `dark:invert dark:brightness-*` dims the black
+     ink to black, then inverts it back to pure #FFF. Hence the explicit filter.
+     0.88 sits just under --fg: the avatar's stroke area reads brighter than text
+     does at the same luminance. */
+  .ink-invert:is(.dark *) {
+    filter: invert(1) brightness(0.88);
+  }
+
   /* The §1 gradient exception: a mask softening the end of a scroll strip. */
   .scroll-fade-r {
     -webkit-mask-image: linear-gradient(

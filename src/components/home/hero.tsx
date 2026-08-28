@@ -20,7 +20,7 @@ export function Hero() {
                   alt=""
                   fill
                   sizes="44px"
-                  className="object-cover dark:invert"
+                  className="ink-invert object-cover"
                   priority
                 />
               </span>

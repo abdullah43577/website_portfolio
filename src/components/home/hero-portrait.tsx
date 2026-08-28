@@ -11,7 +11,7 @@ export function HeroPortrait() {
           alt={`${site.name}, ${site.role}`}
           priority
           sizes="(min-width: 1280px) 400px, 360px"
-          className="h-full w-full object-contain dark:invert"
+          className="ink-invert h-full w-full object-contain"
         />
       </div>
       <figcaption className="mt-4 flex items-center justify-between border-t border-border pt-4">

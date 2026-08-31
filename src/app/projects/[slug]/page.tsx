@@ -7,6 +7,7 @@ import { ProjectMeta } from "@/components/projects/project-meta";
 import { ProjectNext } from "@/components/projects/project-next";
 import { Section } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
+import { projectKeywords } from "@/content/keywords";
 import { getAdjacentProject, getProject, projects } from "@/content/projects";
 
 type Params = { params: { slug: string } };
@@ -22,6 +23,7 @@ export function generateMetadata({ params }: Params): Metadata {
   return {
     title: project.title,
     description: project.summary,
+    keywords: projectKeywords(project),
     openGraph: { title: project.title, description: project.summary },
   };
 }

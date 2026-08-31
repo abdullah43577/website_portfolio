@@ -4,11 +4,13 @@ import { OpenSource } from "@/components/projects/open-source";
 import { ProjectIndex } from "@/components/projects/project-index";
 import { PageHeader } from "@/components/ui/page-header";
 import { Section } from "@/components/ui/section";
+import { workKeywords } from "@/content/keywords";
 
 export const metadata: Metadata = {
   title: "Work",
   description:
     "Selected fullstack, mobile and web projects — multi-tenant HR platforms, job marketplaces, membership systems and React Native apps.",
+  keywords: workKeywords,
 };
 
 export default function ProjectsPage() {

@@ -4,11 +4,13 @@ import { ContactChannels } from "@/components/contact/contact-channels";
 import { ContactForm } from "@/components/contact/contact-form";
 import { PageHeader } from "@/components/ui/page-header";
 import { Section } from "@/components/ui/section";
+import { contactKeywords } from "@/content/keywords";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
     "Start a conversation about a web platform, a mobile app, or an API that needs building properly.",
+  keywords: contactKeywords,
 };
 
 export default function ContactPage() {

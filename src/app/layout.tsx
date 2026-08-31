@@ -7,6 +7,7 @@ import {
 import "./globals.css";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { knowsAbout, siteKeywords } from "@/content/keywords";
 import { baseUrl, site } from "@/content/site";
 import { THEME_COLORS, themeScript } from "@/lib/theme-script";
 
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  keywords: siteKeywords,
   authors: [{ name: site.name, url: baseUrl }],
   creator: site.name,
   openGraph: {
@@ -75,6 +77,7 @@ const personSchema = {
     addressLocality: "Lagos",
     addressCountry: "NG",
   },
+  knowsAbout,
   sameAs: site.socials.map((social) => social.href),
 };
 

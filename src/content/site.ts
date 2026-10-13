@@ -15,7 +15,7 @@ export const site = {
     label: "Available for new work",
   },
   description:
-    "Fullstack engineer building production web platforms and cross-platform mobile apps — React, Next.js, React Native and Node, from database schema to shipped interface.",
+    "Fullstack engineer building production web platforms and cross-platform mobile apps - React, Next.js, React Native and Node, from database schema to shipped interface.",
   socials: [
     {
       label: "GitHub",

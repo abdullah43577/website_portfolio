@@ -23,7 +23,7 @@ Copy `.env.example` to `.env` and fill in:
 | Variable                   | Purpose                                                            |
 | -------------------------- | ------------------------------------------------------------------ |
 | `NEXT_PUBLIC_LIVE_URL`     | Deployed base URL — metadata, sitemap, robots                      |
-| `NEXT_PUBLIC_API_ENDPOINT` | External mail service the contact form POSTs to (`POST /sendMail`) |
+| `NEXT_PUBLIC_WEB3FORMS_KEY` | Web3Forms access key the contact form submits with                |
 
 Both are optional in development; the base URL falls back to the production domain.
 

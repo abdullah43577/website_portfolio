@@ -10,7 +10,7 @@ export function Experience() {
       <SectionHeader
         eyebrow="Experience"
         title="Where I've built"
-        lede="Agencies, startups and product teams — frontend first, then mobile, now the whole stack."
+        lede="Agencies, startups and product teams - frontend first, then mobile, now the whole stack."
       />
 
       <div className="grid gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">

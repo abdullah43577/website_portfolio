@@ -12,7 +12,7 @@ export const work: Role[] = [
     org: "E-Metric Suites",
     period: "Mar 2026 — Present",
     current: true,
-    note: "E-Metric Suite, E-Metric Jobs and Rel8 — web, API and mobile.",
+    note: "E-Metric Suite, E-Metric Jobs and Rel8 - web, API and mobile.",
   },
   {
     title: "Frontend Developer",
@@ -30,7 +30,7 @@ export const work: Role[] = [
     title: "Fullstack Developer",
     org: "Sequential Jobs",
     period: "Nov 2024 — Oct 2025",
-    note: "Job marketplace — Express and Prisma API, Next.js dashboard, Expo client.",
+    note: "Job marketplace - Express and Prisma API, Next.js dashboard, Expo client.",
   },
   {
     title: "Frontend Developer",

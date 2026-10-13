@@ -12,7 +12,7 @@ export function SelectedWork() {
       <SectionHeader
         eyebrow="Selected work"
         title="Products people actually use"
-        lede="Platforms and apps built end to end — the API, the schema, the dashboard and the client you install."
+        lede="Platforms and apps built end to end - the API, the schema, the dashboard and the client you install."
         action={
           <Button href="/projects" variant="secondary" size="sm">
             All work

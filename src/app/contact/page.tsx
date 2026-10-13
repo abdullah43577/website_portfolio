@@ -19,7 +19,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Tell me what you're building"
-        lede="The more concrete the better — what it should do, who it's for, and where it currently hurts. I'll come back with an honest read on scope, approach and timeline."
+        lede="The more concrete the better - what it should do, who it's for, and where it currently hurts. I'll come back with an honest read on scope, approach and timeline."
       >
         <AvailabilityPill />
       </PageHeader>

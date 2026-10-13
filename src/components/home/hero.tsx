@@ -34,7 +34,7 @@ export function Hero() {
             </h1>
 
             <p className="text-subtitle mt-7 max-w-prose text-fg-muted">
-              Fullstack engineer in Lagos. I work across the whole product —
+              Fullstack engineer in Lagos. I work across the whole product -
               Postgres and MongoDB schemas, Node APIs, React dashboards, and
               React Native apps in both stores.
             </p>

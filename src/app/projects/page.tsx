@@ -9,7 +9,7 @@ import { workKeywords } from "@/content/keywords";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Selected fullstack, mobile and web projects — multi-tenant HR platforms, job marketplaces, membership systems and React Native apps.",
+    "Selected fullstack, mobile and web projects - multi-tenant HR platforms, job marketplaces, membership systems and React Native apps.",
   keywords: workKeywords,
 };
 

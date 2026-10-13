@@ -2,7 +2,7 @@ export const capabilities = [
   {
     id: "mobile",
     title: "Mobile applications",
-    body: "Cross-platform iOS and Android apps in React Native and Expo — the real kind, with auth, payments, push notifications, offline behaviour and a store release at the end of it.",
+    body: "Cross-platform iOS and Android apps in React Native and Expo - the real kind, with auth, payments, push notifications, offline behaviour and a store release at the end of it.",
     items: [
       "Expo Router, EAS builds and store submission",
       "Offline-first data with persisted caches",
@@ -13,7 +13,7 @@ export const capabilities = [
   {
     id: "web",
     title: "Web platforms",
-    body: "Dashboards and products that hold up under real data — dense tables, live updates, charts, exports, and interfaces that stay usable on a phone.",
+    body: "Dashboards and products that hold up under real data - dense tables, live updates, charts, exports, and interfaces that stay usable on a phone.",
     items: [
       "React and Next.js with strict TypeScript",
       "Design systems and semantic theming",

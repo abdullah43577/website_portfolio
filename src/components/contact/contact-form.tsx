@@ -35,15 +35,22 @@ export function ContactForm() {
     setStatus("sending");
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_ENDPOINT}/sendMail`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-      );
-      if (!response.ok) throw new Error("Request failed");
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `Portfolio enquiry from ${form.firstName} ${form.lastName}`,
+          from_name: `${form.firstName} ${form.lastName}`,
+          replyto: form.email,
+          ...form,
+        }),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) throw new Error(result.message);
       setForm(empty);
       setStatus("sent");
     } catch {
@@ -150,7 +157,7 @@ export function ContactForm() {
         {status === "sent" ? (
           <p className="flex items-center gap-2 text-sm text-fg">
             <Check className="h-4 w-4 text-accent" strokeWidth={2} />
-            Sent — I&apos;ll reply within two days.
+            Sent - I&apos;ll reply within two days.
           </p>
         ) : null}
         {status === "error" ? (

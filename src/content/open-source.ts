@@ -12,7 +12,7 @@ export const packages = [
     name: "@reactmode/env-check",
     command: "npx @reactmode/env-check",
     description:
-      "Validates .env against .env.example before runtime and reports what's missing or extra — so a deploy fails on your machine rather than in production.",
+      "Validates .env against .env.example before runtime and reports what's missing or extra - so a deploy fails on your machine rather than in production.",
     tags: ["CLI", "Node.js", "DX"],
     npm: "https://www.npmjs.com/package/@reactmode/env-check",
     github: "https://github.com/abdullah43577/env-check",

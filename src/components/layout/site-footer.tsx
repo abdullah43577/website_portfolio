@@ -72,7 +72,7 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-3 border-t border-border py-8 text-[13px] text-fg-subtle md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {site.name} — published on npm as{" "}
+            © {year} {site.name} - published on npm as{" "}
             <span className="font-mono text-fg-muted">@reactmode</span>
           </p>
           <p className="font-mono text-[11px] uppercase tracking-[0.14em]">

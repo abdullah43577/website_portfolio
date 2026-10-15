@@ -8,7 +8,7 @@ export const site = {
   role: "Fullstack & Mobile Engineer",
   currentRole: "Fullstack Developer at E-Metric Suites",
   location: "Lagos, Nigeria",
-  email: "officialayo540@gmail.com",
+  email: "abdullah.ayoola@reactmode.dev",
   cv: "/Abdullah Ayoola CV.pdf",
   availability: {
     open: true,

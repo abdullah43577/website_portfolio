@@ -7,12 +7,21 @@ import { ProjectCard } from "./project-card";
 
 type Filter = ProjectCategory | "all";
 
-const filters: { value: Filter; label: string }[] = [
+const allFilters: { value: Filter; label: string }[] = [
   { value: "all", label: "Everything" },
   { value: "fullstack", label: "Fullstack" },
   { value: "mobile", label: "Mobile" },
   { value: "web", label: "Web" },
 ];
+
+const countFor = (filter: Filter) =>
+  filter === "all"
+    ? publishedProjects.length
+    : publishedProjects.filter((p) => p.category === filter).length;
+
+const filters = allFilters
+  .map((filter) => ({ ...filter, count: countFor(filter.value) }))
+  .filter((filter) => filter.count > 0);
 
 export function ProjectIndex() {
   const [active, setActive] = useState<Filter>("all");
@@ -35,10 +44,6 @@ export function ProjectIndex() {
         >
           {filters.map((filter) => {
             const isActive = filter.value === active;
-            const count =
-              filter.value === "all"
-                ? publishedProjects.length
-                : publishedProjects.filter((p) => p.category === filter.value).length;
 
             return (
               <button
@@ -61,7 +66,7 @@ export function ProjectIndex() {
                     isActive ? "text-bg/60" : "text-fg-subtle",
                   )}
                 >
-                  {count}
+                  {filter.count}
                 </span>
               </button>
             );

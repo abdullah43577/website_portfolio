@@ -27,11 +27,22 @@ export function ProjectHero({ project }: { project: Project }) {
             {project.tagline}
           </p>
 
-          {project.links?.live || project.links?.github ? (
+          {project.links?.live ||
+          project.links?.playStore ||
+          project.links?.github ? (
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               {project.links.live ? (
                 <Button href={project.links.live}>
                   Visit the product
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.8} />
+                </Button>
+              ) : null}
+              {project.links.playStore ? (
+                <Button
+                  href={project.links.playStore}
+                  variant={project.links.live ? "secondary" : "primary"}
+                >
+                  Get it on Google Play
                   <ArrowUpRight className="h-4 w-4" strokeWidth={1.8} />
                 </Button>
               ) : null}

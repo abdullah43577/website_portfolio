@@ -13,7 +13,7 @@ export type Project = {
   status: "shipped" | "in-development" | "archived";
   stack: string[];
   highlights: string[];
-  links?: { live?: string; github?: string };
+  links?: { live?: string; github?: string; playStore?: string };
 };
 
 export const projects: Project[] = [
@@ -110,9 +110,12 @@ export const projects: Project[] = [
       "Three clients kept honest against a single Express/MongoDB API, with one shared status vocabulary for payments and membership so the portal, the admin and the app never disagree about what a record means.",
       "A members portal carried through a full visual redesign - sixteen modules migrated onto a new token set and a shared primitive library, without a rewrite.",
       "An admin console rebuilt on React 19 and Chakra 3, including drag-and-drop ordering with dnd-kit for elections and content arrangement.",
-      "A React Native member app bringing dues, events, elections, chat and credentials to the phone, built to mirror the portal's behaviour rather than reinvent it.",
+      "A React Native member app, published on Google Play, bringing dues, events, elections, chat and credentials to association members' phones - built to mirror the portal's behaviour rather than reinvent it.",
       "An applicant pipeline and member support ticketing built on top of the same membership records.",
     ],
+    links: {
+      playStore: "https://play.google.com/store/apps/details?id=ng.rel8.membership",
+    },
   },
   {
     slug: "emetric-jobs",
@@ -142,8 +145,11 @@ export const projects: Project[] = [
       "Background work moved off the request path onto BullMQ and Redis - transactional email, notification fan-out and scheduled sweeps run as jobs, not as blocking handlers.",
       "Real-time messaging between employers and applicants over Socket.IO, alongside a REST surface validated with Zod at every boundary.",
       "An admin console covering user management, listings, subscriptions, broadcast and analytics, with trend figures computed from real data rather than hardcoded into the stat cards.",
-      "A separate Expo client for candidates, sharing the same API and auth model as the web app.",
+      "A separate Expo app for job seekers, published on Google Play, sharing the same API and auth model as the web app.",
     ],
+    links: {
+      playStore: "https://play.google.com/store/apps/details?id=com.emetric.jobs",
+    },
   },
   {
     slug: "afripantry",

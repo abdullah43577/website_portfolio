@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { baseUrl } from "@/content/site";
-import { projects } from "@/content/projects";
+import { publishedProjects } from "@/content/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
+  const projectRoutes: MetadataRoute.Sitemap = publishedProjects.map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
     lastModified,
     changeFrequency: "monthly",

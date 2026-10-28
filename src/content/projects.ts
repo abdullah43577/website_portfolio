@@ -14,6 +14,7 @@ export type Project = {
   stack: string[];
   highlights: string[];
   links?: { live?: string; github?: string; playStore?: string };
+  published?: boolean;
 };
 
 export const projects: Project[] = [
@@ -163,6 +164,7 @@ export const projects: Project[] = [
     period: "2026",
     featured: true,
     status: "in-development",
+    published: false,
     stack: [
       "Expo",
       "React Native",
@@ -192,6 +194,7 @@ export const projects: Project[] = [
     period: "2025 — 2026",
     featured: true,
     status: "shipped",
+    published: false,
     stack: [
       "Expo",
       "React Native",
@@ -207,6 +210,41 @@ export const projects: Project[] = [
       "A single axios client with interceptors handling auth refresh, keeping token logic out of every feature.",
       "Interaction detail built on Reanimated 4, with a reusable UI primitive set (Button, Card, TextInput, Avatar) shared across auth, onboarding and dashboard.",
     ],
+  },
+  {
+    slug: "heed",
+    title: "Heed",
+    tagline: "An AI inbox assistant that never sends without your tap",
+    summary:
+      "Connect your Gmail accounts and Heed reads the mail that does not need you, drafts replies for the mail that does, and only asks for your attention to review a draft and tap Send. Built solo - the app, the API and the landing page.",
+    category: "mobile",
+    platforms: ["Android", "API", "Web"],
+    role: "Solo — React Native app, Node/Prisma API and Next.js web",
+    period: "2026",
+    featured: false,
+    status: "in-development",
+    published: false,
+    stack: [
+      "Expo",
+      "React Native",
+      "TypeScript",
+      "Node.js",
+      "Prisma",
+      "PostgreSQL",
+      "Redis",
+      "Gmail API",
+    ],
+    highlights: [
+      "A triage pipeline where cheap sender rules run before any model call, and anything the AI is unsure about stays unread and untouched rather than being guessed at.",
+      "Nothing is ever sent without the user tapping Send: recipients are computed from the message headers in code, never taken from model output, and Send stays disabled while a draft still carries a placeholder only the user can fill.",
+      "Inbox sync over Gmail's history API with idempotent workers, so an overlapping poll and a platform cron can both run without double-handling a message.",
+      "OAuth tokens encrypted at rest with AES-256-GCM, and every Gmail call routed through one module that is the only place a client is built or a token refreshed.",
+      "Ask your inbox: a streamed chat across every connected account whose answers cite the exact emails they used, as tappable rows.",
+    ],
+    links: {
+      live: "https://heed.reactmode.dev",
+      github: "https://github.com/abdullah43577/heed",
+    },
   },
   {
     slug: "qalam",
@@ -289,14 +327,16 @@ export const projects: Project[] = [
   },
 ];
 
-export const featuredProjects = projects.filter((p) => p.featured);
+export const publishedProjects = projects.filter((p) => p.published !== false);
+
+export const featuredProjects = publishedProjects.filter((p) => p.featured);
 
 export function getProject(slug: string) {
-  return projects.find((p) => p.slug === slug);
+  return publishedProjects.find((p) => p.slug === slug);
 }
 
 export function getAdjacentProject(slug: string) {
-  const index = projects.findIndex((p) => p.slug === slug);
+  const index = publishedProjects.findIndex((p) => p.slug === slug);
   if (index === -1) return undefined;
-  return projects[(index + 1) % projects.length];
+  return publishedProjects[(index + 1) % publishedProjects.length];
 }

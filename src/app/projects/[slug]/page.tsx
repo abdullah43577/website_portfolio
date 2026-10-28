@@ -8,12 +8,12 @@ import { ProjectNext } from "@/components/projects/project-next";
 import { Section } from "@/components/ui/section";
 import { Tag } from "@/components/ui/tag";
 import { projectKeywords } from "@/content/keywords";
-import { getAdjacentProject, getProject, projects } from "@/content/projects";
+import { getAdjacentProject, getProject, publishedProjects } from "@/content/projects";
 
 type Params = { params: { slug: string } };
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  return publishedProjects.map((project) => ({ slug: project.slug }));
 }
 
 export function generateMetadata({ params }: Params): Metadata {

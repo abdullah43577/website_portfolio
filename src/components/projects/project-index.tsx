@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { projects, type ProjectCategory } from "@/content/projects";
+import { publishedProjects, type ProjectCategory } from "@/content/projects";
 import { cn } from "@/lib/utils";
 import { ProjectCard } from "./project-card";
 
@@ -20,8 +20,8 @@ export function ProjectIndex() {
   const visible = useMemo(
     () =>
       active === "all"
-        ? projects
-        : projects.filter((p) => p.category === active),
+        ? publishedProjects
+        : publishedProjects.filter((p) => p.category === active),
     [active],
   );
 
@@ -37,8 +37,8 @@ export function ProjectIndex() {
             const isActive = filter.value === active;
             const count =
               filter.value === "all"
-                ? projects.length
-                : projects.filter((p) => p.category === filter.value).length;
+                ? publishedProjects.length
+                : publishedProjects.filter((p) => p.category === filter.value).length;
 
             return (
               <button
